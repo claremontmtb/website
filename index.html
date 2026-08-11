@@ -230,9 +230,6 @@
               <li>SoCal League registration steps</li>
               <li>Recommended gear &amp; bike setup</li>
             </ul>
-            <div style="margin-top: 32px; padding: 24px; border: 1px solid #2a2e35; border-radius: 8px; background: #14161a;">
-              <p style="margin: 0; font-size: 0.95rem; color: #9aa1ac;"><strong style="color: #d64461;">Prefer email?</strong> Reach us directly at <a href="mailto:info@claremontmtb.org" style="color: #ffffff; text-decoration: underline;">info@claremontmtb.org</a></p>
-            </div>
           </div>
           <form onSubmit="{{ submitForm }}" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px; display: grid; gap: 20px;">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
@@ -351,8 +348,6 @@
             </div>
           </sc-for>
         </div>
-
-        <p style="margin: 28px 0 0; color: #9aa1ac; font-size: 0.95rem;">Questions about registration? Email <a href="mailto:info@claremontmtb.org" style="color: #ffffff; text-decoration: underline;">info@claremontmtb.org</a> — we'll walk you through it.</p>
       </div>
     </section>
 
@@ -525,7 +520,7 @@
       <div style="position: relative; width: min(1200px, 92%); margin: 0 auto; text-align: center;">
         <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin-bottom: 16px;">Ready To Coach?</h2>
         <p style="max-width: 60ch; margin: 0 auto 32px; color: #e8ebef; text-wrap: pretty;">The Wolfpack always needs more adults on the ride. If you love bikes and love kids finding themselves in the outdoors, we want you.</p>
-        <a href="mailto:info@claremontmtb.org?subject=Interested%20in%20coaching%20Claremont%20Wolfpack%20MTB" style="display: inline-flex; align-items: center; padding: 16px 32px; border-radius: 8px; background: #480014; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase;" style-hover="background: #2e000d; color: #ffffff;">Email The Team Director</a>
+        <a href="#interest" style="display: inline-flex; align-items: center; padding: 16px 32px; border-radius: 8px; background: #480014; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase;" style-hover="background: #2e000d; color: #ffffff;">Contact The Team Director</a>
       </div>
     </section>
   </main>
@@ -564,7 +559,6 @@
         <div>
           <h4 style="font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px; color: #ffffff;">Connect</h4>
           <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 0.95rem;">
-            <li><a href="mailto:info@claremontmtb.org" style="color: #9aa1ac;" style-hover="color: #d64461;">info@claremontmtb.org</a></li>
             <li><a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #9aa1ac;" style-hover="color: #d64461;">TeamSnap Portal ↗</a></li>
             <li><a href="https://www.socalyouthcycling.org/" target="_blank" rel="noopener" style="color: #9aa1ac;" style-hover="color: #d64461;">SoCal League ↗</a></li>
           </ul>
@@ -648,7 +642,7 @@ class Component extends DCLogic {
       ],
 
       signupSteps: [
-        { num: "01", title: "Email the team to get the Wolfpack passcode", body: "Send a note to info@claremontmtb.org. You'll get the team registration passcode plus current practice times and meeting dates. Do this first — you can't join the team roster without it." },
+        { num: "01", title: "Email the team to get the Wolfpack passcode", body: "Contact us using the form below. You'll get the team registration passcode plus current practice times and meeting dates. Do this first — you can't join the team roster without it." },
         { num: "02", title: "Register the rider with the SoCal League", body: "Create a CCN profile at socalyouthcycling.org/register and join Claremont Wolfpack with your passcode. Returning riders: reuse last year's profile, don't create a new one." },
         { num: "03", title: "Sign waivers & the student-athlete code of conduct", body: "Parent/guardian and rider both sign the participation agreement, waiver & release of liability, and code of conduct inside CCN. No signed waivers means no riding." },
         { num: "04", title: "Pay league + team fees", body: "League registration is paid through CCN. The $50 Wolfpack team fee is separate and covers jersey, team tent, and race-day support." },
@@ -713,7 +707,7 @@ class Component extends DCLogic {
       ],
 
       steps: [
-        { num: "01", title: "Talk to the Wolfpack team director", body: "Email info@claremontmtb.org to start the conversation. We'll invite you to the team's registration passcode and answer questions about time commitment and expectations." },
+        { num: "01", title: "Talk to the Wolfpack team director", body: "Contact us using the form below to start the conversation. We'll invite you to the team's registration passcode and answer questions about time commitment and expectations." },
         { num: "02", title: "Register on the CCN platform", body: "Create your CCN profile, join the Wolfpack team, and complete the coach registration form. Returning coaches: use your existing profile — don't create a new one." },
         { num: "03", title: "Sign waivers & adult code of conduct", body: "Read and sign the participation agreement, waiver & release of liability, and adult code of conduct in your CCN cart. Paperwork isn't the fun part, but all of these steps are required by the League's insurance before you can coach." },
         { num: "04", title: "Complete your annual background check", body: "Initiated through CCN. Complete this at least 28 days before your first practice — county courts can be slow. Cost is $38 initial, $11 annual renewal. Questions:", email: "coachlicensing@socalyouthcycling.org", mailto: "mailto:coachlicensing@socalyouthcycling.org" },
@@ -736,7 +730,7 @@ class Component extends DCLogic {
         ]},
         { title: "CCN · Registration", href: "https://www.socalyouthcycling.org/register", hint: "socalyouthcycling.org/register", items: [
           g("Create or claim your profile", "All coach registration runs through CCN"),
-          g("Join the Wolfpack team", "Passcode from info@claremontmtb.org"),
+          g("Join the Wolfpack team", "Passcode from team director"),
           g("Sign waivers & pay fees", "Waivers and background check kicked off here")
         ]},
         { title: "CCN · Coach Registration", href: "https://ccnbikes.com/#!/memberships/socal-cycling-league", hint: "ccnbikes.com", items: [
@@ -754,7 +748,7 @@ class Component extends DCLogic {
           g("League rules & safety", "Current SoCal League rulebook and policies"),
           g("News & announcements", "Season updates, venue changes, weather calls")
         ]},
-        { title: "Wolfpack Coaching Team", href: "mailto:info@claremontmtb.org", hint: "info@claremontmtb.org", items: [
+        { title: "Wolfpack Coaching Team", href: "https://go.teamsnap.com/", hint: "Teamsnap", items: [
           g("Ask questions before you sign up", "We'll walk you through everything"),
           g("Get the team passcode", "Needed to join Wolfpack on CCN"),
           g("Shadow a practice", "Come out and see if it's a fit")
