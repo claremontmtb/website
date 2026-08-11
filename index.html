@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0a0b0d; color: #ffffff; font-family: "Inter", system-ui, sans-serif; font-size: 1.05rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  img { max-width: 100%; display: block; }
+  a { color: #d64461; text-decoration: none; }
+  a:hover { color: #f0748c; }
+  h1, h2, h3, h4 { margin: 0; font-family: "Barlow Condensed", sans-serif; text-transform: uppercase; line-height: 1.05; font-weight: 700; }
+  p { margin: 0 0 1rem; }
+  input, select, textarea, button { font-family: inherit; }
+</style>
+</helmet>
+
+<div style="background: #0a0b0d; min-height: 100vh;">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(10,11,13,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid #2a2e35;">
+    <div style="width: min(1200px, 92%); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; cursor: pointer; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;" onClick="{{ goHome }}">
+        <img src="images/wolfpack-logo.jpg" alt="Claremont Wolfpack mascot" style="width: 44px; height: 44px; border-radius: 50%;" />
+        <span>Claremont <span style="color: #d64461;">Wolfpack</span> MTB</span>
+      </div>
+      <nav style="display: flex; align-items: center; gap: 26px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap; justify-content: flex-end;">
+        <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Home</span>
+        <a href="#races" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Events</a>
+        <a href="#practice" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Practice</a>
+        <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goRiders }}">Riders</span>
+        <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goCoaches }}">Coaches</span>
+        <a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;">TeamSnap ↗</a>
+        <a href="#interest" style="padding: 11px 22px; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600; font-size: 0.85rem;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHome }}">Join The Pack</a>
+      </nav>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+    <section style="position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; border-bottom: 4px solid #480014;">
+      <div style="position: absolute; inset: 0; background: url('images/hero.png') center/cover no-repeat; transform: scale(1.05);"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,11,13,0.9) 0%, rgba(10,11,13,0.55) 50%, rgba(10,11,13,0.2) 100%), linear-gradient(180deg, rgba(10,11,13,0) 60%, rgba(10,11,13,0.95) 100%);"></div>
+      <div style="position: relative; width: min(1200px, 92%); margin: 0 auto; max-width: 820px; padding: 120px 0 96px;">
+        <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461;">
+          <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Claremont MTB · SoCal League
+        </div>
+        <h1 style="font-size: clamp(3rem, 2rem + 5vw, 6.5rem); letter-spacing: -0.02em; margin: 22px 0 16px;">Ride With The Pack.<span style="color: #d64461; display: block;">Race In The Mountains.</span></h1>
+        <p style="font-size: 1.3rem; max-width: 55ch; color: #e8ebef; margin-bottom: 32px; text-wrap: pretty;">A youth mountain bike race team for 6th–12th graders. Riding and racing together in the SoCal League. No experience necessary — just a love of riding bikes.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+          <a href="#interest" style="display: inline-flex; align-items: center; padding: 16px 32px; border-radius: 8px; background: #480014; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid transparent;" style-hover="background: #2e000d; color: #ffffff;">Get More Info</a>
+          <a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; padding: 16px 32px; border-radius: 8px; background: transparent; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid rgba(255,255,255,0.35);" style-hover="border-color: #ffffff; background: rgba(255,255,255,0.08); color: #ffffff;">Team Portal · TeamSnap ↗</a>
+        </div>
+        <sc-if value="{{ showHeroStats }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 64px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 32px; max-width: 720px;">
+          <div><span style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; color: #d64461; font-weight: 700;">6–12</span><small style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: #9aa1ac;">Grades</small></div>
+          <div><span style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; color: #d64461; font-weight: 700;">6</span><small style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: #9aa1ac;">Spring Races</small></div>
+          <div><span style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; color: #d64461; font-weight: 700;">2×</span><small style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: #9aa1ac;">Practice / Week</small></div>
+          <div><span style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; color: #d64461; font-weight: 700;">$50</span><small style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: #9aa1ac;">Team Fee</small></div>
+        </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <section style="padding: 88px 0 96px;">
+      <div style="width: min(1400px, 94%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>On The Trail
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">This Is The Pack</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Real riders. Real dirt. From Bonelli's flowing berms to Marshall Canyon's climbs — this is where we train, together.</p>
+        </div>
+        <div style="position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 9; background: #14161a;">
+          <sc-for list="{{ slides }}" as="slide" hint-placeholder-count="1">
+            <div style="position: absolute; inset: 0; transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1); opacity: {{ slide.opacity }};">
+              <img src="{{ slide.src }}" alt="{{ slide.alt }}" style="width: 100%; height: 100%; object-fit: cover;" />
+              <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.7) 100%);"></div>
+              <div style="position: absolute; left: 32px; bottom: 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.08em; color: #ffffff;">{{ slide.caption }}</div>
+            </div>
+          </sc-for>
+          <div style="position: absolute; top: 50%; transform: translateY(-50%); left: 16px; right: 16px; display: flex; justify-content: space-between; pointer-events: none; z-index: 4;">
+            <button aria-label="Previous slide" onClick="{{ prevSlide }}" style="pointer-events: auto; width: 48px; height: 48px; border-radius: 50%; background: rgba(10,11,13,0.6); border: 1px solid rgba(255,255,255,0.2); color: #ffffff; display: grid; place-items: center; cursor: pointer; font-size: 1.2rem;" style-hover="background: #480014;">‹</button>
+            <button aria-label="Next slide" onClick="{{ nextSlide }}" style="pointer-events: auto; width: 48px; height: 48px; border-radius: 50%; background: rgba(10,11,13,0.6); border: 1px solid rgba(255,255,255,0.2); color: #ffffff; display: grid; place-items: center; cursor: pointer; font-size: 1.2rem;" style-hover="background: #480014;">›</button>
+          </div>
+          <div style="position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 5;">
+            <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="5">
+              <button aria-label="Show slide" onClick="{{ dot.go }}" style="width: 32px; height: 3px; border: none; cursor: pointer; padding: 0; background: {{ dot.bg }};"></button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits" style="padding: 96px 0; background: #14161a; border-top: 1px solid #2a2e35; border-bottom: 1px solid #2a2e35;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Why Join
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">More Than A Team</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0; text-wrap: pretty;">Mountain biking is a rare kind of sport: you race as an individual, but you train, travel, and grow as a team. It's a family sport, a fitness sport, and a fun sport — all in one pack.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;">
+          <div style="padding: 32px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 14px; transition: transform 0.3s, border-color 0.3s;" style-hover="transform: translateY(-4px); border-color: #d64461;">
+            <div style="width: 40px; height: 3px; background: #480014; margin-bottom: 22px;"></div>
+            <h3 style="font-size: 1.35rem; margin-bottom: 12px; letter-spacing: 0.03em;">SoCal League Racing</h3>
+            <p style="color: #9aa1ac; font-size: 0.95rem; margin: 0; line-height: 1.55;">Compete in the SoCal High School Cycling League — six spring races on premier courses across Southern California.</p>
+          </div>
+          <div style="padding: 32px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 14px; transition: transform 0.3s, border-color 0.3s;" style-hover="transform: translateY(-4px); border-color: #d64461;">
+            <div style="width: 40px; height: 3px; background: #480014; margin-bottom: 22px;"></div>
+            <h3 style="font-size: 1.35rem; margin-bottom: 12px; letter-spacing: 0.03em;">Team Family</h3>
+            <p style="color: #9aa1ac; font-size: 0.95rem; margin: 0; line-height: 1.55;">Ride with friends who become family. Group rides, team dinners, race-day tents — a community that shows up for each other.</p>
+          </div>
+          <div style="padding: 32px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 14px; transition: transform 0.3s, border-color 0.3s;" style-hover="transform: translateY(-4px); border-color: #d64461;">
+            <div style="width: 40px; height: 3px; background: #480014; margin-bottom: 22px;"></div>
+            <h3 style="font-size: 1.35rem; margin-bottom: 12px; letter-spacing: 0.03em;">Fitness For Life</h3>
+            <p style="color: #9aa1ac; font-size: 0.95rem; margin: 0; line-height: 1.55;">Build endurance, strength, and confidence on the bike — habits that carry far past the finish line.</p>
+          </div>
+          <div style="padding: 32px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 14px; transition: transform 0.3s, border-color 0.3s;" style-hover="transform: translateY(-4px); border-color: #d64461;">
+            <div style="width: 40px; height: 3px; background: #480014; margin-bottom: 22px;"></div>
+            <h3 style="font-size: 1.35rem; margin-bottom: 12px; letter-spacing: 0.03em;">All Skill Levels</h3>
+            <p style="color: #9aa1ac; font-size: 0.95rem; margin: 0; line-height: 1.55;">No experience necessary. Beginners are welcomed and mentored; advanced riders are pushed to grow. Your own mountain bike and helmet required.</p>
+          </div>
+          <div style="padding: 32px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 14px; transition: transform 0.3s, border-color 0.3s;" style-hover="transform: translateY(-4px); border-color: #d64461;">
+            <div style="width: 40px; height: 3px; background: #480014; margin-bottom: 22px;"></div>
+            <h3 style="font-size: 1.35rem; margin-bottom: 12px; letter-spacing: 0.03em;">Structured Season</h3>
+            <p style="color: #9aa1ac; font-size: 0.95rem; margin: 0; line-height: 1.55;">Practices twice a week, weekend team rides, and a six-race spring season. Predictable, consistent, and family-friendly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="races" style="padding: 96px 0; background: #0a0b0d;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>The Road To Race Day
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">2027 Season Events</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Registration, team meetings, and first practices in the fall — then five SoCal League races plus State Championships in Tehachapi. The league posts final dates and venues on <a href="https://www.socalyouthcycling.org/races" target="_blank" rel="noopener">the official race page ↗</a>.</p>
+        </div>
+        <div style="display: grid; gap: 12px;">
+          <sc-for list="{{ races }}" as="race" hint-placeholder-count="5">
+            <div style="display: grid; grid-template-columns: 100px 1.6fr 1.4fr 130px; gap: 24px; align-items: center; padding: 24px; background: #14161a; border: 1px solid #2a2e35; border-left: 4px solid #480014; border-radius: 8px;" style-hover="background: #1e2126;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2.4rem; color: #d64461; font-weight: 700; line-height: 1;">{{ race.num }}</div>
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.03em;">{{ race.name }}<small style="display: block; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #9aa1ac; text-transform: none; letter-spacing: 0; margin-top: 4px; font-weight: 400;">{{ race.round }}</small></div>
+              <div style="color: #e8ebef; font-size: 0.95rem;">{{ race.location }}
+                <sc-if value="{{ race.href }}" hint-placeholder-val="{{ false }}">
+                  <a href="https://ccnbikes.com/#!/memberships/socal-cycling-league" target="_blank" rel="noopener" style="display: block; margin-top: 4px; font-size: 0.9rem; text-decoration: underline;">Register on CCN ↗</a>
+                </sc-if>
+              </div>
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9aa1ac; text-align: right;"><strong style="display: block; color: #ffffff; font-size: 1.05rem;">{{ race.date }}</strong>{{ race.window }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="practice" style="padding: 96px 0; background: #14161a; border-top: 1px solid #2a2e35;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Where We Ride
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin-bottom: 20px;">Practice Twice A Week</h2>
+            <p style="color: #e8ebef; text-wrap: pretty;">Practices run November through the spring race season. Two practice days per week plus optional weekend team rides. We rotate through four local spots: Bonelli Regional Park, Marshall Canyon, the Claremont Hills Wilderness Park, and the Wash.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0;">
+              <div style="padding: 24px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 8px;">
+                <h4 style="font-size: 1.2rem; color: #d64461; margin-bottom: 8px; letter-spacing: 0.05em;">Weekday</h4>
+                <p style="margin: 0; font-size: 0.95rem; color: #e8ebef;">After-school skills &amp; endurance</p>
+                <small style="display: block; margin-top: 8px; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.1em;">Day &amp; Time TBD</small>
+              </div>
+              <div style="padding: 24px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 8px;">
+                <h4 style="font-size: 1.2rem; color: #d64461; margin-bottom: 8px; letter-spacing: 0.05em;">Weekend</h4>
+                <p style="margin: 0; font-size: 0.95rem; color: #e8ebef;">Longer team ride &amp; drills</p>
+                <small style="display: block; margin-top: 8px; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.1em;">Day &amp; Time TBD</small>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px;">
+              <sc-for list="{{ rideSpots }}" as="spot" hint-placeholder-count="4">
+                <div style="padding: 16px 18px; background: #0a0b0d; border: 1px solid #2a2e35; border-left: 3px solid #480014; border-radius: 6px;">
+                  <strong style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.04em;">{{ spot.name }}</strong>
+                  <span style="color: #9aa1ac; font-size: 0.85rem;">{{ spot.note }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <p style="color: #9aa1ac; font-size: 0.95rem;">Which spot we're riding is posted weekly in TeamSnap — always check before you load the bike.</p>
+          </div>
+          <div style="aspect-ratio: 4/3; border-radius: 14px; overflow: hidden; border: 1px solid #2a2e35;">
+            <img src="images/practice-sunset.jpg" alt="Wolfpack riders stretching in a circle at dusk practice with the San Gabriel mountains behind" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="interest" style="padding: 96px 0; background: #0a0b0d; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: -40%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(122,0,20,0.35), transparent 60%);"></div>
+      <div style="position: relative; width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Ready To Run With The Pack?
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">Get More Information</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Send us your info and we'll follow up with practice details, meeting dates, and everything you need to join.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+          <div>
+            <p style="color: #e8ebef;">We welcome new riders and families all season. Fill out the form and we'll get back to you within a couple of days with:</p>
+            <ul style="color: #e8ebef; padding-left: 1.2em; margin: 0 0 24px; display: grid; gap: 6px;">
+              <li>Practice schedule &amp; meet-up locations</li>
+              <li>Next team meeting date</li>
+              <li>SoCal League registration steps</li>
+              <li>Recommended gear &amp; bike setup</li>
+            </ul>
+            <div style="margin-top: 32px; padding: 24px; border: 1px solid #2a2e35; border-radius: 8px; background: #14161a;">
+              <p style="margin: 0; font-size: 0.95rem; color: #9aa1ac;"><strong style="color: #d64461;">Prefer email?</strong> Reach us directly at <a href="mailto:info@claremontmtb.org" style="color: #ffffff; text-decoration: underline;">info@claremontmtb.org</a></p>
+            </div>
+          </div>
+          <form onSubmit="{{ submitForm }}" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px; display: grid; gap: 20px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div>
+                <label for="parent" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Parent / Guardian Name</label>
+                <input type="text" id="parent" name="parent_name" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
+              </div>
+              <div>
+                <label for="rider" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Rider Name</label>
+                <input type="text" id="rider" name="rider_name" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div>
+                <label for="email" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Email</label>
+                <input type="email" id="email" name="email" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
+              </div>
+              <div>
+                <label for="phone" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Phone</label>
+                <input type="tel" id="phone" name="phone" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div>
+                <label for="grade" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Rider Grade</label>
+                <select id="grade" name="grade" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;">
+                  <option>Select…</option>
+                  <option>6th</option><option>7th</option><option>8th</option>
+                  <option>9th</option><option>10th</option><option>11th</option><option>12th</option>
+                </select>
+              </div>
+              <div>
+                <label for="experience" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Riding Experience</label>
+                <select id="experience" name="experience" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;">
+                  <option>New to mountain biking</option>
+                  <option>Some experience</option>
+                  <option>Regularly rides trails</option>
+                  <option>Has raced before</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="notes" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Questions or Notes</label>
+              <textarea id="notes" name="notes" placeholder="Anything you'd like us to know?" style="width: 100%; min-height: 120px; resize: vertical; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;"></textarea>
+            </div>
+            <button type="submit" style="width: 100%; justify-content: center; display: inline-flex; align-items: center; padding: 16px 32px; border-radius: 8px; background: #480014; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid transparent; cursor: pointer;" style-hover="background: #2e000d;">Send To The Coaches</button>
+            <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
+              <div style="padding: 12px 16px; border-radius: 4px; font-size: 0.95rem; background: rgba(50,180,90,0.15); color: #7de89a; border: 1px solid rgba(50,180,90,0.35);">Thanks — we'll be in touch within a couple of days.</div>
+            </sc-if>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isRiders }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="position: relative; padding: 160px 0 64px; border-bottom: 1px solid #2a2e35; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: url('images/cora-thumbs.jpg') center 25%/cover no-repeat;"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,12,15,0.55) 0%, rgba(11,12,15,0.85) 70%, #0a0b0d 100%), linear-gradient(90deg, rgba(11,12,15,0.75) 0%, rgba(11,12,15,0.3) 60%, transparent 100%);"></div>
+      <div style="position: relative; width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461;">
+          <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>For Riders
+        </div>
+        <h1 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin: 16px 0;">Show Up Ready To Ride</h1>
+        <p style="max-width: 55ch; color: #e8ebef; text-wrap: pretty;">Everything you need to be prepared for practice, race day, and the trail. Check TeamSnap for weekly location updates and last-minute changes.</p>
+      </div>
+    </section>
+
+    <section style="padding: 80px 0; background: #14161a; border-bottom: 1px solid #2a2e35;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Start Here
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">Sign Up &amp; League Info</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Every Wolfpack rider registers with the SoCal League <em>and</em> the team. Work through these in order — allow a week or two before your first practice.</p>
+        </div>
+
+        <ol style="list-style: none; padding: 0; margin: 0 0 48px; display: grid;">
+          <sc-for list="{{ signupSteps }}" as="step" hint-placeholder-count="5">
+            <li style="display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid #2a2e35;">
+              <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 700; color: #d64461; line-height: 1.2;">{{ step.num }}</span>
+              <div>
+                <h4 style="margin: 0 0 6px; font-size: 1.15rem;">{{ step.title }}</h4>
+                <p style="margin: 0; color: #e8ebef; font-size: 0.95rem; text-wrap: pretty;">{{ step.body }}
+                  <sc-if value="{{ step.email }}" hint-placeholder-val="{{ false }}">
+                    <a href="{{ step.mailto }}" style="text-decoration: underline;">{{ step.email }}</a>
+                  </sc-if>
+                </p>
+              </div>
+            </li>
+          </sc-for>
+        </ol>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px;">
+          <sc-for list="{{ riderLinks }}" as="link" hint-placeholder-count="4">
+            <a href="{{ link.href }}" target="_blank" rel="noopener" style="position: relative; display: block; background: #0a0b0d; border: 1px solid #2a2e35; border-top: 4px solid #480014; border-radius: 10px; padding: 26px; color: #ffffff; transition: transform 0.22s, border-color 0.22s;" style-hover="transform: translateY(-4px); border-color: #d64461; color: #ffffff;">
+              <span style="position: absolute; top: 22px; right: 24px; color: #d64461; font-size: 1.4rem; font-weight: 700; line-height: 1;">↗</span>
+              <h3 style="font-size: 1.25rem; margin-bottom: 10px; padding-right: 28px; letter-spacing: 0.04em;">{{ link.title }}</h3>
+              <p style="margin: 0 0 14px; color: #9aa1ac; font-size: 0.92rem; line-height: 1.5;">{{ link.body }}</p>
+              <span style="display: block; padding-top: 12px; border-top: 1px solid #2a2e35; color: #d64461; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">{{ link.hint }}</span>
+            </a>
+          </sc-for>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 28px; background: #0a0b0d; border: 1px solid #2a2e35; border-radius: 10px;">
+          <sc-for list="{{ signupFacts }}" as="fact" hint-placeholder-count="4">
+            <div>
+              <span style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 1.7rem; font-weight: 700; color: #d64461; line-height: 1.1;">{{ fact.value }}</span>
+              <strong style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; color: #ffffff; margin: 6px 0 4px;">{{ fact.label }}</strong>
+              <span style="color: #9aa1ac; font-size: 0.88rem;">{{ fact.note }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <p style="margin: 28px 0 0; color: #9aa1ac; font-size: 0.95rem;">Questions about registration? Email <a href="mailto:info@claremontmtb.org" style="color: #ffffff; text-decoration: underline;">info@claremontmtb.org</a> — we'll walk you through it.</p>
+      </div>
+    </section>
+
+    <section style="padding: 96px 0;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Gear Checklist
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">What To Bring To Practice</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Show up self-sufficient. A prepared rider is a fast rider — and a safe one.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+          <sc-for list="{{ riderGear }}" as="card" hint-placeholder-count="6">
+            <div style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px;" style-hover="border-color: #d64461;">
+              <h3 style="color: #d64461; font-size: 1.3rem; margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid #2a2e35; letter-spacing: 0.04em;">{{ card.title }}</h3>
+              <ul style="list-style: none; padding: 0; margin: 0; display: grid;">
+                <sc-for list="{{ card.items }}" as="item" hint-placeholder-count="4">
+                  <li style="display: flex; align-items: start; gap: 12px; padding: 9px 0; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <span style="flex-shrink: 0; width: 8px; height: 8px; background: #480014; transform: rotate(45deg); margin-top: 8px;"></span>
+                    <span><strong style="color: #ffffff; display: block;">{{ item.name }}</strong><span style="color: #9aa1ac; font-size: 0.85rem;">{{ item.note }}</span></span>
+                  </li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCoaches }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="position: relative; padding: 160px 0 64px; border-bottom: 1px solid #2a2e35; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: url('images/practice-circle.jpg') center 30%/cover no-repeat;"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,12,15,0.55) 0%, rgba(11,12,15,0.85) 70%, #0a0b0d 100%), linear-gradient(90deg, rgba(11,12,15,0.75) 0%, rgba(11,12,15,0.3) 60%, transparent 100%);"></div>
+      <div style="position: relative; width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461;">
+          <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>For Coaches &amp; Ride Leaders
+        </div>
+        <h1 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin: 16px 0;">Lead The Pack</h1>
+        <p style="max-width: 60ch; color: #e8ebef; text-wrap: pretty;">Coaches, ride leaders, and parent volunteers are the backbone of Wolfpack. Here's everything you need to get licensed, insured, and out on the trail with our riders — plus what to carry when you're the adult on the ride.</p>
+      </div>
+    </section>
+
+    <section style="padding: 96px 0;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Get Started
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">How To Become A Wolfpack Coach</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Every SoCal League coach follows the same path. Start with a conversation, then work through the SoCal League's licensing steps. Budget 4–6 weeks — background checks can take time.</p>
+        </div>
+        <ol style="list-style: none; padding: 0; margin: 0; display: grid;">
+          <sc-for list="{{ steps }}" as="step" hint-placeholder-count="8">
+            <li style="display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid #2a2e35;">
+              <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 700; color: #d64461; line-height: 1.2;">{{ step.num }}</span>
+              <div>
+                <h4 style="margin: 0 0 6px; font-size: 1.15rem;">{{ step.title }}</h4>
+                <p style="margin: 0; color: #e8ebef; font-size: 0.95rem; text-wrap: pretty;">{{ step.body }}
+                  <sc-if value="{{ step.email }}" hint-placeholder-val="{{ false }}">
+                    <a href="{{ step.mailto }}" style="text-decoration: underline;">{{ step.email }}</a>
+                  </sc-if>
+                </p>
+              </div>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </section>
+
+    <section style="padding: 96px 0; background: #14161a; border-top: 1px solid #2a2e35;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>SoCal League Coach Licensing
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">Two License Levels</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">The SoCal League licenses coaches at two levels — Assistant Coach and Coach. Everyone starts on the Assistant pathway; after two seasons you must reach Coach level to keep coaching. The more Coach-level licensees a team has, the more resilient it is.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <sc-for list="{{ licenses }}" as="lic" hint-placeholder-count="3">
+            <div style="background: #0a0b0d; border: 1px solid #2a2e35; border-top: 4px solid #480014; border-radius: 8px; padding: 26px;">
+              <span style="display: inline-block; padding: 4px 12px; background: #480014; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 4px; margin-bottom: 14px;">{{ lic.level }}</span>
+              <h3 style="margin: 0 0 8px; font-size: 1.3rem;">{{ lic.title }}</h3>
+              <p style="color: #e8ebef; font-size: 0.95rem; margin-bottom: 16px;">{{ lic.body }}</p>
+              <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 2px;">
+                <sc-for list="{{ lic.reqs }}" as="req" hint-placeholder-count="4">
+                  <li style="display: flex; align-items: start; gap: 12px; padding: 6px 0; font-size: 0.95rem; color: #ffffff;">
+                    <span style="flex-shrink: 0; width: 8px; height: 8px; background: #480014; transform: rotate(45deg); margin-top: 8px;"></span>{{ req }}
+                  </li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 96px 0;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Coach Portals &amp; Resources
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">Official Links</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">The systems you'll live in. Bookmark these — you'll come back to them every season.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+          <sc-for list="{{ coachLinks }}" as="card" hint-placeholder-count="6">
+            <a href="{{ card.href }}" target="_blank" rel="noopener" style="position: relative; display: block; background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px; color: #ffffff; transition: transform 0.22s, border-color 0.22s;" style-hover="transform: translateY(-4px); border-color: #d64461; color: #ffffff;">
+              <h3 style="color: #d64461; font-size: 1.3rem; margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid #2a2e35; letter-spacing: 0.04em; padding-right: 28px;">{{ card.title }}</h3>
+              <span style="position: absolute; top: 22px; right: 24px; color: #d64461; font-size: 1.4rem; font-weight: 700; line-height: 1;">↗</span>
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <sc-for list="{{ card.items }}" as="item" hint-placeholder-count="3">
+                  <li style="display: flex; align-items: start; gap: 12px; padding: 9px 0; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <span style="flex-shrink: 0; width: 8px; height: 8px; background: #480014; transform: rotate(45deg); margin-top: 8px;"></span>
+                    <span><strong style="color: #ffffff; display: block;">{{ item.name }}</strong><span style="color: #9aa1ac; font-size: 0.85rem;">{{ item.note }}</span></span>
+                  </li>
+                </sc-for>
+              </ul>
+              <span style="display: block; margin-top: 18px; padding-top: 12px; border-top: 1px solid #2a2e35; color: #d64461; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">{{ card.hint }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 96px 0; background: #14161a; border-top: 1px solid #2a2e35;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Coach Kit
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">What Coaches Carry On The Trail</h2>
+          </div>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Riders show up prepared. Coaches show up prepared <em>for everyone</em>. Everything on the Riders page — plus these.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+          <sc-for list="{{ coachGear }}" as="card" hint-placeholder-count="6">
+            <div style="background: #0a0b0d; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px;" style-hover="border-color: #d64461;">
+              <h3 style="color: #d64461; font-size: 1.3rem; margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid #2a2e35; letter-spacing: 0.04em;">{{ card.title }}</h3>
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <sc-for list="{{ card.items }}" as="item" hint-placeholder-count="5">
+                  <li style="display: flex; align-items: start; gap: 12px; padding: 9px 0; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <span style="flex-shrink: 0; width: 8px; height: 8px; background: #480014; transform: rotate(45deg); margin-top: 8px;"></span>
+                    <span><strong style="color: #ffffff; display: block;">{{ item.name }}</strong><span style="color: #9aa1ac; font-size: 0.85rem;">{{ item.note }}</span></span>
+                  </li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 96px 0; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(122,0,20,0.3), transparent 60%);"></div>
+      <div style="position: relative; width: min(1200px, 92%); margin: 0 auto; text-align: center;">
+        <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin-bottom: 16px;">Ready To Coach?</h2>
+        <p style="max-width: 60ch; margin: 0 auto 32px; color: #e8ebef; text-wrap: pretty;">The Wolfpack always needs more adults on the ride. If you love bikes and love kids finding themselves in the outdoors, we want you.</p>
+        <a href="mailto:info@claremontmtb.org?subject=Interested%20in%20coaching%20Claremont%20Wolfpack%20MTB" style="display: inline-flex; align-items: center; padding: 16px 32px; border-radius: 8px; background: #480014; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase;" style-hover="background: #2e000d; color: #ffffff;">Email The Team Director</a>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <footer style="background: #05060a; padding: 64px 0 32px; border-top: 4px solid #480014;">
+    <div style="width: min(1200px, 92%); margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
+            <img src="images/wolfpack-logo.jpg" alt="Claremont Wolfpack mascot" style="width: 44px; height: 44px; border-radius: 50%;" />
+            <span>Claremont <span style="color: #d64461;">Wolfpack</span> MTB</span>
+          </div>
+          <p style="color: #9aa1ac; font-size: 0.95rem; max-width: 40ch;">A SoCal League youth mountain bike race team for 6th–12th graders. Ride the pack. Race in the mountains.</p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px; color: #ffffff;">Explore</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 0.95rem;">
+            <li><a href="#races" style="color: #9aa1ac;" style-hover="color: #d64461;" onClick="{{ goHome }}">Season Events</a></li>
+            <li><a href="#practice" style="color: #9aa1ac;" style-hover="color: #d64461;" onClick="{{ goHome }}">Practice</a></li>
+            <li><a href="#benefits" style="color: #9aa1ac;" style-hover="color: #d64461;" onClick="{{ goHome }}">Why Join</a></li>
+            <li><span style="color: #9aa1ac; cursor: pointer;" style-hover="color: #d64461;" onClick="{{ goRiders }}">Riders Page</span></li>
+            <li><span style="color: #9aa1ac; cursor: pointer;" style-hover="color: #d64461;" onClick="{{ goCoaches }}">Coaches Page</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px; color: #ffffff;">Ride With Us</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 0.95rem; color: #9aa1ac;">
+            <li>Bonelli Regional Park</li>
+            <li>Marshall Canyon</li>
+            <li>Claremont Hills Wilderness Park</li>
+            <li>The Wash</li>
+            <li>Claremont, CA</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px; color: #ffffff;">Connect</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 0.95rem;">
+            <li><a href="mailto:info@claremontmtb.org" style="color: #9aa1ac;" style-hover="color: #d64461;">info@claremontmtb.org</a></li>
+            <li><a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #9aa1ac;" style-hover="color: #d64461;">TeamSnap Portal ↗</a></li>
+            <li><a href="https://www.socalyouthcycling.org/" target="_blank" rel="noopener" style="color: #9aa1ac;" style-hover="color: #d64461;">SoCal League ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top: 1px solid #2a2e35; padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.12em; flex-wrap: wrap; gap: 16px;">
+        <span>© 2026 Claremont Wolfpack MTB · Grades 6–12</span>
+        <span>Bike &amp; helmet required · Beginners welcome</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;riders&quot;,&quot;coaches&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;showHeroStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Photo slider&quot;},&quot;slideSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:12,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Photo slider&quot;}}">
+class Component extends DCLogic {
+  state = { page: null, slide: 0, formSent: false };
+
+  componentDidMount() {
+    if (this.props.autoplay !== false) {
+      const ms = (this.props.slideSeconds || 5) * 1000;
+      this.timer = setInterval(() => {
+        this.setState(s => ({ slide: (s.slide + 1) % 5 }));
+      }, ms);
+    }
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  go(page) { this.setState({ page }); if (typeof window !== "undefined") window.scrollTo(0, 0); }
+
+  renderVals() {
+    const page = this.state.page || this.props.startPage || "home";
+    const slideData = [
+      ["images/finish-joy.jpg", "Wolfpack rider smiling as she rolls across the finish line", "Finish Line · SoCal League"],
+      ["images/boys-staging.jpg", "Claremont Mountain Bike Team riders in Wolfpack jerseys staging for a race", "Staging · Race Day"],
+      ["images/sunset-rider.jpg", "Rider on a golden hour ridgeline trail above the valley", "Golden Hour · Trail Ride"],
+      ["images/podium-skypark.jpg", "Five young riders on the SoCal League finish podium with medals", "On The Podium · SoCal Finals"],
+      ["images/practice-sunset.jpg", "Claremont riders during practice at practice-sunset.", "Ride Together · Practice"],
+    ];
+    const cur = this.state.slide;
+
+    const g = (name, note) => ({ name, note });
+
+    return {
+      isHome: page === "home",
+      isRiders: page === "riders",
+      isCoaches: page === "coaches",
+      showHeroStats: this.props.showHeroStats !== false,
+      formSent: this.state.formSent,
+      goHome: () => this.go("home"),
+      goRiders: () => this.go("riders"),
+      goCoaches: () => this.go("coaches"),
+      submitForm: (e) => { e.preventDefault(); this.setState({ formSent: true }); },
+      nextSlide: () => this.setState(s => ({ slide: (s.slide + 1) % 5 })),
+      prevSlide: () => this.setState(s => ({ slide: (s.slide + 4) % 5 })),
+      slides: slideData.map(([src, alt, caption], i) => ({
+        src, alt, caption, opacity: i === cur ? 1 : 0
+      })),
+      dots: slideData.map((_, i) => ({
+        bg: i === cur ? "#480014" : "rgba(255,255,255,0.3)",
+        go: () => this.setState({ slide: i })
+      })),
+
+      rideSpots: [
+        { name: "Bonelli Park", note: "San Dimas · flow, berms, race-pace laps" },
+        { name: "Marshall Canyon", note: "La Verne · climbing & singletrack endurance" },
+        { name: "Wilderness Park", note: "Claremont Hills · fire-road climbing power" },
+        { name: "The Wash", note: "Close to home · skills, drills, and sprints" }
+      ],
+
+      races: [
+        { num: "—", name: "SoCal League Registration Opens", round: "Team Event", location: "Online", href: true, date: "Oct", window: "Register early" },
+        { num: "—", name: "Team Meeting", round: "Team Event", location: "Location TBC", date: "Oct", window: "Riders & parents" },
+        { num: "—", name: "First Practice", round: "Team Event", location: "Bonelli Regional Park", date: "Nov", window: "Bring full gear" },
+        { num: "01", name: "Beach To Boulders", round: "SoCal League Race 1", location: "Location TBD", date: "TBD", window: "Status TBD" },
+        { num: "02", name: "The Vail Lake Challenge", round: "SoCal League Race 2", location: "Vail Lake · Temecula (TBC)", date: "TBD", window: "Status TBD" },
+        { num: "03", name: "Cachuma", round: "SoCal League Race 3", location: "Lake Cachuma · Santa Barbara County (TBC)", date: "TBD", window: "Status TBD" },
+        { num: "04", name: "Victory At Vail", round: "SoCal League Race 4", location: "Vail Lake · Temecula (TBC)", date: "TBD", window: "Status TBD" },
+        { num: "05", name: "Finals", round: "SoCal League Race 5", location: "Location TBD", date: "TBD", window: "Status TBD" },
+        { num: "★", name: "State Championships", round: "Season Finale · SoCal League", location: "Tehachapi", date: "TBD", window: "Status TBD" }
+      ],
+
+      signupSteps: [
+        { num: "01", title: "Email the team to get the Wolfpack passcode", body: "Send a note to info@claremontmtb.org. You'll get the team registration passcode plus current practice times and meeting dates. Do this first — you can't join the team roster without it." },
+        { num: "02", title: "Register the rider with the SoCal League", body: "Create a CCN profile at socalyouthcycling.org/register and join Claremont Wolfpack with your passcode. Returning riders: reuse last year's profile, don't create a new one." },
+        { num: "03", title: "Sign waivers & the student-athlete code of conduct", body: "Parent/guardian and rider both sign the participation agreement, waiver & release of liability, and code of conduct inside CCN. No signed waivers means no riding." },
+        { num: "04", title: "Pay league + team fees", body: "League registration is paid through CCN. The $50 Wolfpack team fee is separate and covers jersey, team tent, and race-day support." },
+        { num: "05", title: "Get the bike and helmet checked", body: "Bring your bike to a practice or a local shop for a safety check before your first ride. A helmet in good condition (not cracked, under 5 years old) is required at every practice and race." }
+      ],
+
+      riderLinks: [
+        { title: "SoCal League · Register", href: "https://www.socalyouthcycling.org/register", hint: "socalyouthcycling.org/register", body: "The official rider registration portal. Create your CCN profile, join the Wolfpack team with your passcode, sign waivers, and pay league fees." },
+        { title: "SoCal Youth Cycling", href: "https://www.socalyouthcycling.org/", hint: "socalyouthcycling.org", body: "League home: race calendar, venues, categories, rules, weather calls, and season announcements. Check here before every race weekend." },
+        { title: "League Rulebook", href: "https://www.socalyouthcycling.org/rulebook", hint: "socalyouthcycling.org/rulebook", body: "Race categories, call-ups, conduct, and equipment rules. Worth a skim before your first race weekend." },
+        { title: "TeamSnap · Wolfpack", href: "https://go.teamsnap.com/", hint: "go.teamsnap.com", body: "Day-to-day team hub: practice locations, weekly schedule changes, carpools, and messages from the coaches. Turn notifications on." }
+      ],
+
+      signupFacts: [
+        { value: "6–12", label: "Eligible Grades", note: "Middle and high school riders" },
+        { value: "$50", label: "Team Fee", note: "Separate from league fees" },
+        { value: "Oct", label: "Registration Opens", note: "Register before the first November practice" },
+        { value: "Bike + Helmet", label: "Required Gear", note: "Everything else is on the checklist below" }
+      ],
+
+      riderGear: [
+        { title: "Ride Essentials", items: [
+          g("Mountain bike", "Tuned, tires aired, chain lubed"),
+          g("Helmet", "Required — no helmet, no ride"),
+          g("Gloves", "Full finger recommended"),
+          g("Cycling shoes", "Or closed-toe athletic shoes"),
+          g("Eye protection", "Sunglasses or clear lenses")
+        ]},
+        { title: "Hydration & Fuel", items: [
+          g("Water bottles or hydration pack", "Bring enough for the whole ride"),
+          g("Ride food & electrolytes", "Bars, gels, real food, drink mix — good fueling is essential to good riding. Nothing new on race day.")
+        ]},
+        { title: "Trailside Repair Kit", items: [
+          g("Spare tube (correct size)", "Know your wheel & tire size"),
+          g("Tire levers", "Two, plastic"),
+          g("Mini pump or CO₂ + inflator", "Extra CO₂ cartridges are cheap insurance"),
+          g("Multi-tool", "Hex keys, T25 Torx, chain breaker"),
+          g("Quick link", "Sized for your chain (11-, 12-speed)"),
+          g("Tubeless plug kit", "If running tubeless tires")
+        ]},
+        { title: "Weather & Layers", items: [
+          g("Sunscreen", "SPF 30+, applied before rolling out"),
+          g("Light jacket or wind shell", "It cools off fast at night — pack a layer")
+        ]},
+        { title: "Bike Check (Before You Leave The House)", items: [
+          g("Tire pressure checked", "Usually 16–20 PSI — ask a coach for your target"),
+          g("Chain lubed & wiped", "Dry chain = broken chain"),
+          g("Brakes tested", "Both work? Rotor straight?"),
+          g("Bolts snug", "Stem, seatpost, cranks")
+        ]}
+      ],
+
+      _unusedEvents: [
+        { day: "01", month: "Oct", title: "SoCal League Registration Opens", detail: "Register your rider at socaldirtseries.com — team fee $50 separate.", tag: "Milestone", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
+        { day: "29", month: "Oct", title: "Team Meeting", detail: "Kickoff for parents & riders. Location TBC.", tag: "Meeting", tagBg: "rgba(255,180,50,0.12)", tagColor: "#ffcc66", tagBorder: "rgba(255,180,50,0.3)" },
+        { day: "02", month: "Nov", title: "First Practice · Bonelli", detail: "Skills assessment & team ride. Bring full gear checklist.", tag: "Practice", tagBg: "rgba(255,255,255,0.06)", tagColor: "#e8ebef", tagBorder: "#2a2e35" },
+        { day: "08", month: "Nov", title: "Weekend Team Ride · Marshall Canyon", detail: "Longer endurance ride. Meet at trailhead.", tag: "Practice", tagBg: "rgba(255,255,255,0.06)", tagColor: "#e8ebef", tagBorder: "#2a2e35" },
+        { day: "TBD", month: "Feb", title: "SoCal League Race #1 · Season Opener", detail: "Season kickoff. Details posted in TeamSnap.", tag: "Race", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
+        { day: "TBD", month: "Mar", title: "SoCal League Race #2 & #3", detail: "Two rounds two weekends apart.", tag: "Race", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
+        { day: "TBD", month: "Apr", title: "SoCal League Race #4", detail: "Location TBC.", tag: "Race", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
+        { day: "TBD", month: "May", title: "SoCal League Finals · Race #5", detail: "Season finale & end-of-year team celebration.", tag: "Race", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" }
+      ],
+
+      steps: [
+        { num: "01", title: "Talk to the Wolfpack team director", body: "Email info@claremontmtb.org to start the conversation. We'll invite you to the team's registration passcode and answer questions about time commitment and expectations." },
+        { num: "02", title: "Register on the CCN platform", body: "Create your CCN profile, join the Wolfpack team, and complete the coach registration form. Returning coaches: use your existing profile — don't create a new one." },
+        { num: "03", title: "Sign waivers & adult code of conduct", body: "Read and sign the participation agreement, waiver & release of liability, and adult code of conduct in your CCN cart. Paperwork isn't the fun part, but all of these steps are required by the League's insurance before you can coach." },
+        { num: "04", title: "Complete your annual background check", body: "Initiated through CCN. Complete this at least 28 days before your first practice — county courts can be slow. Cost is $38 initial, $11 annual renewal. Questions:", email: "coachlicensing@socalyouthcycling.org", mailto: "mailto:coachlicensing@socalyouthcycling.org" },
+        { num: "05", title: "Complete Abuse & Awareness training", body: "\u201cProtecting Students from Abuse\u201d from the U.S. Center for SafeSport and NFHS. Free, online, and required annually for every coach at both levels." },
+        { num: "06", title: "Assistant Coaches: you're licensed here", body: "Background check plus abuse awareness training is the full Assistant Coach requirement, and all of it is online. You can ride and assist at practice — but a Coach-level licensee has to lead the activity." },
+        { num: "07", title: "Coach level: CCC, First Aid/CPR, and Teaching Basic Bike Skills", body: "Finish the Core Coach Curriculum (online, once, via Canvas on CCN), hold current Basic First Aid + CPR with an in-person component (fully online classes are not accepted, ~$100), and take the Teaching Basic Bike Skills clinic. Questions on whether a First Aid class qualifies go to:", email: "amber@socalyouthcycling.org", mailto: "mailto:amber@socalyouthcycling.org" },
+        { num: "08", title: "Get on the trail with us", body: "Once your CCN profile shows licensed, you're covered by League insurance for the season. Come out to a Wolfpack practice and shadow a current coach for your first few sessions. Coaches must reach the Coach level within two seasons." }
+      ],
+
+      licenses: [
+        { level: "Level 1 · Start Here", title: "Assistant Coach", body: "Works under the supervision of a Coach — provides assistance but does not lead sanctioned activities. Every new volunteer begins on the Assistant pathway, and all Assistant training is online.", reqs: ["Annual registration & waivers on CCN", "Annual criminal background check", "Abuse & Awareness training (NFHS, annual)", "All training available online"] },
+        { level: "Level 2 · Full License", title: "Coach", body: "Leads sanctioned activities — practices, skills sessions, and ride groups — and mentors coaches at both levels. After two seasons you must reach Coach level to keep coaching. Training is online plus local, in-person clinics.", reqs: ["Everything an Assistant Coach needs", "Core Coach Curriculum (once, online via Canvas)", "Basic First Aid + CPR (must have an in-person component)", "Teaching Basic Bike Skills clinic", "CEUs every 3 seasons to stay current"] }
+      ],
+
+      coachLinks: [
+        { title: "SoCal League · Coach", href: "https://www.socalyouthcycling.org/coach", hint: "socalyouthcycling.org/coach", items: [
+          g("Full requirements & policies", "The SoCal League's official coach onboarding page"),
+          g("Background check details", "Cost, timing, and troubleshooting"),
+          g("Approved First Aid/CPR instructors", "Names & contacts on the page")
+        ]},
+        { title: "CCN · Registration", href: "https://www.socalyouthcycling.org/register", hint: "socalyouthcycling.org/register", items: [
+          g("Create or claim your profile", "All coach registration runs through CCN"),
+          g("Join the Wolfpack team", "Passcode from info@claremontmtb.org"),
+          g("Sign waivers & pay fees", "Waivers and background check kicked off here")
+        ]},
+        { title: "CCN · Coach Registration", href: "https://ccnbikes.com/#!/memberships/socal-cycling-league", hint: "ccnbikes.com", items: [
+          g("Coach profile & license status", "Check whether you're cleared to ride"),
+          g("Core Coach Curriculum (Canvas LMS)", "All required online coursework lives here"),
+          g("Upload certificates & CEUs", "First Aid/CPR cards and outside coursework")
+        ]},
+        { title: "SafeSport / NFHS · Abuse Training", href: "https://nfhslearn.com/courses/protecting-students-from-abuse", hint: "nfhslearn.com", items: [
+          g("Protecting Students from Abuse", "Free course, required annually for all coaches"),
+          g("Identify and report misconduct", "Signs, symptoms, and how to make a report"),
+          g("Do it before your first practice", "Both Assistant and Coach levels need it")
+        ]},
+        { title: "SoCal Youth Cycling", href: "https://www.socalyouthcycling.org/", hint: "socalyouthcycling.org", items: [
+          g("Race schedule & venues", "Season race calendar and course info"),
+          g("League rules & safety", "Current SoCal League rulebook and policies"),
+          g("News & announcements", "Season updates, venue changes, weather calls")
+        ]},
+        { title: "Wolfpack Coaching Team", href: "mailto:info@claremontmtb.org", hint: "info@claremontmtb.org", items: [
+          g("Ask questions before you sign up", "We'll walk you through everything"),
+          g("Get the team passcode", "Needed to join Wolfpack on CCN"),
+          g("Shadow a practice", "Come out and see if it's a fit")
+        ]}
+      ],
+
+      coachGear: [
+        { title: "Misc", items: [
+          g("Two-way radio", "GMRS or FRS, one channel agreed with lead coach"),
+          g("Charged phone", "In a case, in a pocket or pack"),
+          g("Small first aid kit", "Riders don't carry one — coaches do"),
+          g("Current coach license card", "Screenshot on phone works"),
+          g("Practice plan", "Skills focus, route, contingency route"),
+          g("Rider medical/allergy notes", "From TeamSnap, quick reference")
+        ]},
+        { title: "Trailside Mechanic", items: [
+          g("Full multi-tool", "Hex, Torx, chain breaker, spoke wrench"),
+          g("Spare tube", "Common size for your rider group"),
+          g("Tire boot + patches", "Park tire boot works great"),
+          g("Master link (11/12-sp)", "Match your riders' drivetrains"),
+          g("Tubeless plugs + tire lever set", "Full plug kit, not just one strip"),
+          g("Mini pump w/ pressure gauge", "You'll need it — riders lose theirs"),
+          g("Zip ties + duct tape", "Wrap tape around a pump body to save space")
+        ]},
+        { title: "Pit & Race-Day Extras", items: [
+          g("Bike stand", "Portable for race pit or practice mechanicals"),
+          g("Torque wrench", "Small preset (5 Nm) for cockpit checks"),
+          g("Chain lube + rag", "Riders always forget on race morning"),
+          g("Cooler + electrolyte mix", "Post-race recovery for the whole group"),
+          g("Team tent + shade", "Coordinate ahead of race weekends"),
+          g("Sharpies + tape", "Number plates, bottles, everything")
+        ]}
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
