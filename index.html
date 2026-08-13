@@ -231,7 +231,10 @@
               <li>Recommended gear &amp; bike setup</li>
             </ul>
           </div>
-          <form onSubmit="{{ submitForm }}" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px; display: grid; gap: 20px;">
+          <form name="interest" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" action="/?formSent=true" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px; display: grid; gap: 20px;">
+            <input type="hidden" name="form-name" value="interest" />
+            <p style="display:none"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
+
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
               <div>
                 <label for="parent" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Parent / Guardian Name</label>
@@ -584,6 +587,14 @@ class Component extends DCLogic {
         this.setState(s => ({ slide: (s.slide + 1) % 5 }));
       }, ms);
     }
+    if (typeof window !== "undefined") {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("formSent") === "true") this.setState({ formSent: true });
+      } catch (e) {
+        /* ignore */
+      }
+    }
   }
   componentWillUnmount() { clearInterval(this.timer); }
 
@@ -611,7 +622,6 @@ class Component extends DCLogic {
       goHome: () => this.go("home"),
       goRiders: () => this.go("riders"),
       goCoaches: () => this.go("coaches"),
-      submitForm: (e) => { e.preventDefault(); this.setState({ formSent: true }); },
       nextSlide: () => this.setState(s => ({ slide: (s.slide + 1) % 5 })),
       prevSlide: () => this.setState(s => ({ slide: (s.slide + 4) % 5 })),
       slides: slideData.map(([src, alt, caption], i) => ({
