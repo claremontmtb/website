@@ -231,7 +231,7 @@
               <li>Recommended gear &amp; bike setup</li>
             </ul>
           </div>
-          <form name="interest" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" action="?formSent=true" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px; display: grid; gap: 20px;">
+          <form name="interest" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" action="" onSubmit="{{ submitInterestForm }}" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px; display: grid; gap: 20px;">
             <input type="hidden" name="form-name" value="interest" />
             <p style="display:none"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
 
@@ -619,6 +619,30 @@ class Component extends DCLogic {
       isCoaches: page === "coaches",
       showHeroStats: this.props.showHeroStats !== false,
       formSent: this.state.formSent,
+      submitInterestForm: async (e) => {
+        if (e && typeof e.preventDefault === "function") e.preventDefault();
+        const form = e && e.target;
+        if (!form) return;
+
+        const formData = new FormData(form);
+        const payload = new URLSearchParams();
+        for (const [key, value] of formData.entries()) {
+          payload.append(key, value == null ? "" : String(value));
+        }
+
+        try {
+          const res = await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: payload.toString()
+          });
+          if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
+          this.setState({ formSent: true });
+          form.reset();
+        } catch (err) {
+          console.error(err);
+        }
+      },
       goHome: () => this.go("home"),
       goRiders: () => this.go("riders"),
       goCoaches: () => this.go("coaches"),
