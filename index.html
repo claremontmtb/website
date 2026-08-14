@@ -587,14 +587,6 @@ class Component extends DCLogic {
         this.setState(s => ({ slide: (s.slide + 1) % 5 }));
       }, ms);
     }
-    if (typeof window !== "undefined") {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        if (params.get("formSent") === "true") this.setState({ formSent: true });
-      } catch (e) {
-        /* ignore */
-      }
-    }
   }
   componentWillUnmount() { clearInterval(this.timer); }
 
