@@ -698,7 +698,8 @@ class Component extends DCLogic {
         { num: "01", title: "Email the team to get the Wolfpack passcode", body: "Contact us using the form below. You'll get the team registration passcode plus current practice times and meeting dates. Do this first — you can't join the team roster without it." },
         { num: "02", title: "Register the rider with the SoCal League", body: "Create a CCN profile at socalyouthcycling.org/register and join Claremont Wolfpack with your passcode. Returning riders: reuse last year's profile, don't create a new one." },
         { num: "03", title: "Sign waivers & the student-athlete code of conduct", body: "Parent/guardian and rider both sign the participation agreement, waiver & release of liability, and code of conduct inside CCN. No signed waivers means no riding." },
-        { num: "04", title: "Pay league + team fees", body: "League registration is paid through CCN. The $50 Wolfpack team fee is separate and covers jersey, team tent, and race-day support." },
+        // { num: "04", title: "Pay league + team fees", body: "League registration is paid through CCN. The $50 Wolfpack team fee is separate and covers team tent, and race-day support." },
+        { num: "04", title: "Pay league fees", body: "League registration is paid through CCN." },
         { num: "05", title: "Get the bike and helmet checked", body: "Bring your bike to a practice or a local shop for a safety check before your first ride. A helmet in good condition (not cracked, under 5 years old) is required at every practice and race." }
       ],
 
@@ -711,7 +712,7 @@ class Component extends DCLogic {
 
       signupFacts: [
         { value: "6–12", label: "Eligible Grades", note: "Middle and high school riders" },
-        { value: "$50", label: "Team Fee", note: "Separate from league fees" },
+        // { value: "$50", label: "Team Fee", note: "Separate from league fees" },
         { value: "Oct", label: "Registration Opens", note: "Register before the first November practice" },
         { value: "Bike + Helmet", label: "Required Gear", note: "Everything else is on the checklist below" }
       ],
@@ -749,7 +750,8 @@ class Component extends DCLogic {
       ],
 
       _unusedEvents: [
-        { day: "01", month: "Oct", title: "SoCal League Registration Opens", detail: "Register your rider at socaldirtseries.com — team fee $50 separate.", tag: "Milestone", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
+        // { day: "01", month: "Oct", title: "SoCal League Registration Opens", detail: "Register your rider at socaldirtseries.com — team fee $50 separate.", tag: "Milestone", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
+        { day: "01", month: "Oct", title: "SoCal League Registration Opens", detail: "Register your rider at socaldirtseries.com", tag: "Milestone", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
         { day: "29", month: "Oct", title: "Team Meeting", detail: "Kickoff for parents & riders. Location TBC.", tag: "Meeting", tagBg: "rgba(255,180,50,0.12)", tagColor: "#ffcc66", tagBorder: "rgba(255,180,50,0.3)" },
         { day: "02", month: "Nov", title: "First Practice · Bonelli", detail: "Skills assessment & team ride. Bring full gear checklist.", tag: "Practice", tagBg: "rgba(255,255,255,0.06)", tagColor: "#e8ebef", tagBorder: "#2a2e35" },
         { day: "08", month: "Nov", title: "Weekend Team Ride · Marshall Canyon", detail: "Longer endurance ride. Meet at trailhead.", tag: "Practice", tagBg: "rgba(255,255,255,0.06)", tagColor: "#e8ebef", tagBorder: "#2a2e35" },
