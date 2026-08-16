@@ -21,6 +21,13 @@
   h1, h2, h3, h4 { margin: 0; font-family: "Barlow Condensed", sans-serif; text-transform: uppercase; line-height: 1.05; font-weight: 700; }
   p { margin: 0 0 1rem; }
   input, select, textarea, button { font-family: inherit; }
+  .mobile-nav-trigger { display: none; }
+  .mobile-nav-panel { display: none; }
+  @media (max-width: 979px) {
+    .desktop-nav { display: none !important; }
+    .mobile-nav-trigger { display: inline-grid !important; }
+    .mobile-nav-panel { display: grid !important; }
+  }
 </style>
 </helmet>
 
@@ -32,7 +39,10 @@
         <img src="images/wolfpack-logo.jpg" alt="Claremont Wolfpack mascot" style="width: 44px; height: 44px; border-radius: 50%;" />
         <span>Claremont <span style="color: #d64461;">Wolfpack</span> MTB</span>
       </div>
-      <nav style="display: flex; align-items: center; gap: 26px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap; justify-content: flex-end;">
+      <button type="button" class="mobile-nav-trigger" aria-label="Toggle navigation menu" onClick="{{ toggleNavMenu }}" style="width: 44px; height: 44px; border-radius: 8px; border: 1px solid #2a2e35; background: #14161a; color: #ffffff; place-items: center; cursor: pointer;">
+        <span style="display: block; width: 20px; height: 2px; background: #ffffff; box-shadow: 0 6px 0 #ffffff, 0 -6px 0 #ffffff;"></span>
+      </button>
+      <nav class="desktop-nav" style="display: flex; align-items: center; gap: 26px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap; justify-content: flex-end;">
         <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Home</span>
         <a href="#races" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Events</a>
         <a href="#practice" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Practice</a>
@@ -42,6 +52,17 @@
         <a href="#interest" style="padding: 11px 22px; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600; font-size: 0.85rem;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHome }}">Join The Pack</a>
       </nav>
     </div>
+    <sc-if value="{{ navMenuOpen }}" hint-placeholder-val="false">
+      <nav class="mobile-nav-panel" style="width: min(1200px, 92%); margin: 0 auto 14px; padding: 14px; gap: 8px; background: #14161a; border: 1px solid #2a2e35; border-radius: 10px; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 0.05em;">
+        <span style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goHomeAndCloseNav }}">Home</span>
+        <a href="#races" style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goHomeAndCloseNav }}">Events</a>
+        <a href="#practice" style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goHomeAndCloseNav }}">Practice</a>
+        <span style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goRiders }}">Riders</span>
+        <span style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goCoaches }}">Coaches</span>
+        <a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ closeNavMenu }}">TeamSnap ↗</a>
+        <a href="#interest" style="margin-top: 4px; padding: 12px 16px; text-align: center; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHomeAndCloseNav }}">Join The Pack</a>
+      </nav>
+    </sc-if>
   </header>
 
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
@@ -578,7 +599,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;riders&quot;,&quot;coaches&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;showHeroStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Photo slider&quot;},&quot;slideSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:12,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Photo slider&quot;}}">
 class Component extends DCLogic {
-  state = { page: null, slide: 0, formSent: false };
+  state = { page: null, slide: 0, formSent: false, navMenuOpen: false };
 
   componentDidMount() {
     if (this.props.autoplay !== false) {
@@ -588,9 +609,11 @@ class Component extends DCLogic {
       }, ms);
     }
   }
-  componentWillUnmount() { clearInterval(this.timer); }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
 
-  go(page) { this.setState({ page }); if (typeof window !== "undefined") window.scrollTo(0, 0); }
+  go(page) { this.setState({ page, navMenuOpen: false }); if (typeof window !== "undefined") window.scrollTo(0, 0); }
 
   renderVals() {
     const page = this.state.page || this.props.startPage || "home";
@@ -609,6 +632,7 @@ class Component extends DCLogic {
       isHome: page === "home",
       isRiders: page === "riders",
       isCoaches: page === "coaches",
+      navMenuOpen: this.state.navMenuOpen,
       showHeroStats: this.props.showHeroStats !== false,
       formSent: this.state.formSent,
       submitInterestForm: async (e) => {
@@ -635,6 +659,9 @@ class Component extends DCLogic {
           console.error(err);
         }
       },
+      toggleNavMenu: () => this.setState(s => ({ navMenuOpen: !s.navMenuOpen })),
+      closeNavMenu: () => this.setState({ navMenuOpen: false }),
+      goHomeAndCloseNav: () => this.go("home"),
       goHome: () => this.go("home"),
       goRiders: () => this.go("riders"),
       goCoaches: () => this.go("coaches"),
