@@ -156,7 +156,7 @@
         </div>
         <div style="display: grid; gap: 12px;">
           <sc-for list="{{ races }}" as="race" hint-placeholder-count="5">
-            <div style="display: grid; grid-template-columns: 100px 1.6fr 1.4fr 130px; gap: 24px; align-items: center; padding: 24px; background: #14161a; border: 1px solid #2a2e35; border-left: 4px solid #480014; border-radius: 8px;" style-hover="background: #1e2126;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px 24px; align-items: center; padding: 24px; background: #14161a; border: 1px solid #2a2e35; border-left: 4px solid #480014; border-radius: 8px;" style-hover="background: #1e2126;">
               <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2.4rem; color: #d64461; font-weight: 700; line-height: 1;">{{ race.num }}</div>
               <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.03em;">{{ race.name }}<small style="display: block; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #9aa1ac; text-transform: none; letter-spacing: 0; margin-top: 4px; font-weight: 400;">{{ race.round }}</small></div>
               <div style="color: #e8ebef; font-size: 0.95rem;">{{ race.location }}
@@ -173,14 +173,14 @@
 
     <section id="practice" style="padding: 96px 0; background: #14161a; border-top: 1px solid #2a2e35;">
       <div style="width: min(1200px, 92%); margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(24px, 4vw, 48px); align-items: center;">
           <div>
             <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
               <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Where We Ride
             </div>
             <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin-bottom: 20px;">Practice Twice A Week</h2>
             <p style="color: #e8ebef; text-wrap: pretty;">Practices run November through the spring race season. Two practice days per week plus optional weekend team rides. We rotate through four local spots: Bonelli Regional Park, Marshall Canyon, the Claremont Hills Wilderness Park, and the Wash.</p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0;">
               <div style="padding: 24px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 8px;">
                 <h4 style="font-size: 1.2rem; color: #d64461; margin-bottom: 8px; letter-spacing: 0.05em;">Weekday</h4>
                 <p style="margin: 0; font-size: 0.95rem; color: #e8ebef;">After-school skills &amp; endurance</p>
