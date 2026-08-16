@@ -221,7 +221,7 @@
           </div>
           <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Send us your info and we'll follow up with practice details, meeting dates, and everything you need to join.</p>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: clamp(24px, 4vw, 64px); align-items: start;">
           <div>
             <p style="color: #e8ebef;">We welcome new riders and families all season. Fill out the form and we'll get back to you within a couple of days with:</p>
             <ul style="color: #e8ebef; padding-left: 1.2em; margin: 0 0 24px; display: grid; gap: 6px;">
@@ -231,11 +231,11 @@
               <li>Recommended gear &amp; bike setup</li>
             </ul>
           </div>
-          <form name="interest" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" action="" onSubmit="{{ submitInterestForm }}" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px; display: grid; gap: 20px;">
+          <form name="interest" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" action="" onSubmit="{{ submitInterestForm }}" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: clamp(20px, 4vw, 32px); display: grid; gap: 20px;">
             <input type="hidden" name="form-name" value="interest" />
             <p style="display:none"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
               <div>
                 <label for="parent" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Parent / Guardian Name</label>
                 <input type="text" id="parent" name="parent_name" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
@@ -245,7 +245,7 @@
                 <input type="text" id="rider" name="rider_name" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
               <div>
                 <label for="email" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Email</label>
                 <input type="email" id="email" name="email" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
@@ -255,7 +255,7 @@
                 <input type="tel" id="phone" name="phone" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
               <div>
                 <label for="grade" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Rider Grade</label>
                 <select id="grade" name="grade" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;">
