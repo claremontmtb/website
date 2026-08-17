@@ -21,6 +21,13 @@
   h1, h2, h3, h4 { margin: 0; font-family: "Barlow Condensed", sans-serif; text-transform: uppercase; line-height: 1.05; font-weight: 700; }
   p { margin: 0 0 1rem; }
   input, select, textarea, button { font-family: inherit; }
+  .mobile-nav-trigger { display: none; }
+  .mobile-nav-panel { display: none; }
+  @media (max-width: 979px) {
+    .desktop-nav { display: none !important; }
+    .mobile-nav-trigger { display: inline-grid !important; }
+    .mobile-nav-panel { display: grid !important; }
+  }
 </style>
 </helmet>
 
@@ -32,7 +39,10 @@
         <img src="images/wolfpack-logo.jpg" alt="Claremont Wolfpack mascot" style="width: 44px; height: 44px; border-radius: 50%;" />
         <span>Claremont <span style="color: #d64461;">Wolfpack</span> MTB</span>
       </div>
-      <nav style="display: flex; align-items: center; gap: 26px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap; justify-content: flex-end;">
+      <button type="button" class="mobile-nav-trigger" aria-label="Toggle navigation menu" onClick="{{ toggleNavMenu }}" style="width: 44px; height: 44px; border-radius: 8px; border: 1px solid #2a2e35; background: #14161a; color: #ffffff; place-items: center; cursor: pointer;">
+        <span style="display: block; width: 20px; height: 2px; background: #ffffff; box-shadow: 0 6px 0 #ffffff, 0 -6px 0 #ffffff;"></span>
+      </button>
+      <nav class="desktop-nav" style="display: flex; align-items: center; gap: 26px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap; justify-content: flex-end;">
         <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Home</span>
         <a href="#races" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Events</a>
         <a href="#practice" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Practice</a>
@@ -42,6 +52,17 @@
         <a href="#interest" style="padding: 11px 22px; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600; font-size: 0.85rem;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHome }}">Join The Pack</a>
       </nav>
     </div>
+    <sc-if value="{{ navMenuOpen }}" hint-placeholder-val="false">
+      <nav class="mobile-nav-panel" style="width: min(1200px, 92%); margin: 0 auto 14px; padding: 14px; gap: 8px; background: #14161a; border: 1px solid #2a2e35; border-radius: 10px; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 0.05em;">
+        <span style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goHomeAndCloseNav }}">Home</span>
+        <a href="#races" style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goHomeAndCloseNav }}">Events</a>
+        <a href="#practice" style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goHomeAndCloseNav }}">Practice</a>
+        <span style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goRiders }}">Riders</span>
+        <span style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goCoaches }}">Coaches</span>
+        <a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ closeNavMenu }}">TeamSnap ↗</a>
+        <a href="#interest" style="margin-top: 4px; padding: 12px 16px; text-align: center; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHomeAndCloseNav }}">Join The Pack</a>
+      </nav>
+    </sc-if>
   </header>
 
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
@@ -156,7 +177,7 @@
         </div>
         <div style="display: grid; gap: 12px;">
           <sc-for list="{{ races }}" as="race" hint-placeholder-count="5">
-            <div style="display: grid; grid-template-columns: 100px 1.6fr 1.4fr 130px; gap: 24px; align-items: center; padding: 24px; background: #14161a; border: 1px solid #2a2e35; border-left: 4px solid #480014; border-radius: 8px;" style-hover="background: #1e2126;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px 24px; align-items: center; padding: 24px; background: #14161a; border: 1px solid #2a2e35; border-left: 4px solid #480014; border-radius: 8px;" style-hover="background: #1e2126;">
               <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2.4rem; color: #d64461; font-weight: 700; line-height: 1;">{{ race.num }}</div>
               <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.03em;">{{ race.name }}<small style="display: block; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #9aa1ac; text-transform: none; letter-spacing: 0; margin-top: 4px; font-weight: 400;">{{ race.round }}</small></div>
               <div style="color: #e8ebef; font-size: 0.95rem;">{{ race.location }}
@@ -173,14 +194,14 @@
 
     <section id="practice" style="padding: 96px 0; background: #14161a; border-top: 1px solid #2a2e35;">
       <div style="width: min(1200px, 92%); margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(24px, 4vw, 48px); align-items: center;">
           <div>
             <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
               <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Where We Ride
             </div>
             <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin-bottom: 20px;">Practice Twice A Week</h2>
             <p style="color: #e8ebef; text-wrap: pretty;">Practices run November through the spring race season. Two practice days per week plus optional weekend team rides. We rotate through four local spots: Bonelli Regional Park, Marshall Canyon, the Claremont Hills Wilderness Park, and the Wash.</p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0;">
               <div style="padding: 24px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 8px;">
                 <h4 style="font-size: 1.2rem; color: #d64461; margin-bottom: 8px; letter-spacing: 0.05em;">Weekday</h4>
                 <p style="margin: 0; font-size: 0.95rem; color: #e8ebef;">After-school skills &amp; endurance</p>
@@ -221,7 +242,7 @@
           </div>
           <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Send us your info and we'll follow up with practice details, meeting dates, and everything you need to join.</p>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: clamp(24px, 4vw, 64px); align-items: start;">
           <div>
             <p style="color: #e8ebef;">We welcome new riders and families all season. Fill out the form and we'll get back to you within a couple of days with:</p>
             <ul style="color: #e8ebef; padding-left: 1.2em; margin: 0 0 24px; display: grid; gap: 6px;">
@@ -231,11 +252,11 @@
               <li>Recommended gear &amp; bike setup</li>
             </ul>
           </div>
-          <form name="interest" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" action="" onSubmit="{{ submitInterestForm }}" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px; display: grid; gap: 20px;">
+          <form name="interest" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" action="" onSubmit="{{ submitInterestForm }}" style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: clamp(20px, 4vw, 32px); display: grid; gap: 20px;">
             <input type="hidden" name="form-name" value="interest" />
             <p style="display:none"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
               <div>
                 <label for="parent" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Parent / Guardian Name</label>
                 <input type="text" id="parent" name="parent_name" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
@@ -245,7 +266,7 @@
                 <input type="text" id="rider" name="rider_name" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
               <div>
                 <label for="email" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Email</label>
                 <input type="email" id="email" name="email" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
@@ -255,7 +276,7 @@
                 <input type="tel" id="phone" name="phone" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;" style-focus="outline: none; border-color: #d64461;" />
               </div>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
               <div>
                 <label for="grade" style="display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8ebef; margin-bottom: 8px;">Rider Grade</label>
                 <select id="grade" name="grade" style="width: 100%; padding: 12px 16px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 4px; color: #ffffff; font-size: 1rem;">
@@ -578,7 +599,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;riders&quot;,&quot;coaches&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;showHeroStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Photo slider&quot;},&quot;slideSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:12,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Photo slider&quot;}}">
 class Component extends DCLogic {
-  state = { page: null, slide: 0, formSent: false };
+  state = { page: null, slide: 0, formSent: false, navMenuOpen: false };
 
   componentDidMount() {
     if (this.props.autoplay !== false) {
@@ -588,9 +609,11 @@ class Component extends DCLogic {
       }, ms);
     }
   }
-  componentWillUnmount() { clearInterval(this.timer); }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
 
-  go(page) { this.setState({ page }); if (typeof window !== "undefined") window.scrollTo(0, 0); }
+  go(page) { this.setState({ page, navMenuOpen: false }); if (typeof window !== "undefined") window.scrollTo(0, 0); }
 
   renderVals() {
     const page = this.state.page || this.props.startPage || "home";
@@ -609,6 +632,7 @@ class Component extends DCLogic {
       isHome: page === "home",
       isRiders: page === "riders",
       isCoaches: page === "coaches",
+      navMenuOpen: this.state.navMenuOpen,
       showHeroStats: this.props.showHeroStats !== false,
       formSent: this.state.formSent,
       submitInterestForm: async (e) => {
@@ -635,6 +659,9 @@ class Component extends DCLogic {
           console.error(err);
         }
       },
+      toggleNavMenu: () => this.setState(s => ({ navMenuOpen: !s.navMenuOpen })),
+      closeNavMenu: () => this.setState({ navMenuOpen: false }),
+      goHomeAndCloseNav: () => this.go("home"),
       goHome: () => this.go("home"),
       goRiders: () => this.go("riders"),
       goCoaches: () => this.go("coaches"),
@@ -671,7 +698,8 @@ class Component extends DCLogic {
         { num: "01", title: "Email the team to get the Wolfpack passcode", body: "Contact us using the form below. You'll get the team registration passcode plus current practice times and meeting dates. Do this first — you can't join the team roster without it." },
         { num: "02", title: "Register the rider with the SoCal League", body: "Create a CCN profile at socalyouthcycling.org/register and join Claremont Wolfpack with your passcode. Returning riders: reuse last year's profile, don't create a new one." },
         { num: "03", title: "Sign waivers & the student-athlete code of conduct", body: "Parent/guardian and rider both sign the participation agreement, waiver & release of liability, and code of conduct inside CCN. No signed waivers means no riding." },
-        { num: "04", title: "Pay league + team fees", body: "League registration is paid through CCN. The $50 Wolfpack team fee is separate and covers jersey, team tent, and race-day support." },
+        // { num: "04", title: "Pay league + team fees", body: "League registration is paid through CCN. The $50 Wolfpack team fee is separate and covers team tent, and race-day support." },
+        { num: "04", title: "Pay league fees", body: "League registration is paid through CCN." },
         { num: "05", title: "Get the bike and helmet checked", body: "Bring your bike to a practice or a local shop for a safety check before your first ride. A helmet in good condition (not cracked, under 5 years old) is required at every practice and race." }
       ],
 
@@ -684,7 +712,7 @@ class Component extends DCLogic {
 
       signupFacts: [
         { value: "6–12", label: "Eligible Grades", note: "Middle and high school riders" },
-        { value: "$50", label: "Team Fee", note: "Separate from league fees" },
+        // { value: "$50", label: "Team Fee", note: "Separate from league fees" },
         { value: "Oct", label: "Registration Opens", note: "Register before the first November practice" },
         { value: "Bike + Helmet", label: "Required Gear", note: "Everything else is on the checklist below" }
       ],
@@ -722,7 +750,8 @@ class Component extends DCLogic {
       ],
 
       _unusedEvents: [
-        { day: "01", month: "Oct", title: "SoCal League Registration Opens", detail: "Register your rider at socaldirtseries.com — team fee $50 separate.", tag: "Milestone", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
+        // { day: "01", month: "Oct", title: "SoCal League Registration Opens", detail: "Register your rider at socaldirtseries.com — team fee $50 separate.", tag: "Milestone", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
+        { day: "01", month: "Oct", title: "SoCal League Registration Opens", detail: "Register your rider at socaldirtseries.com", tag: "Milestone", tagBg: "rgba(210,31,43,0.15)", tagColor: "#d64461", tagBorder: "rgba(210,31,43,0.3)" },
         { day: "29", month: "Oct", title: "Team Meeting", detail: "Kickoff for parents & riders. Location TBC.", tag: "Meeting", tagBg: "rgba(255,180,50,0.12)", tagColor: "#ffcc66", tagBorder: "rgba(255,180,50,0.3)" },
         { day: "02", month: "Nov", title: "First Practice · Bonelli", detail: "Skills assessment & team ride. Bring full gear checklist.", tag: "Practice", tagBg: "rgba(255,255,255,0.06)", tagColor: "#e8ebef", tagBorder: "#2a2e35" },
         { day: "08", month: "Nov", title: "Weekend Team Ride · Marshall Canyon", detail: "Longer endurance ride. Meet at trailhead.", tag: "Practice", tagBg: "rgba(255,255,255,0.06)", tagColor: "#e8ebef", tagBorder: "#2a2e35" },
