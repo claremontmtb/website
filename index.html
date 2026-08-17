@@ -23,10 +23,29 @@
   input, select, textarea, button { font-family: inherit; }
   .mobile-nav-trigger { display: none; }
   .mobile-nav-panel { display: none; }
+  .site-footer-grid { min-width: 0; }
+  .site-footer-column { min-width: 0; }
+  .site-footer-column ul,
+  .site-footer-column li,
+  .site-footer-column a,
+  .site-footer-column span,
+  .site-footer-column h4 {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
   @media (max-width: 979px) {
     .desktop-nav { display: none !important; }
     .mobile-nav-trigger { display: inline-grid !important; }
     .mobile-nav-panel { display: grid !important; }
+  }
+  @media (max-width: 900px) {
+    .site-footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  }
+  @media (max-width: 560px) {
+    .site-footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .site-footer-brand { display: flex; flex-wrap: wrap; }
+    .site-footer-bottom { flex-direction: column; align-items: flex-start !important; }
+    .site-footer-bottom span { display: block; }
   }
 </style>
 </helmet>
@@ -303,6 +322,11 @@
             <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
               <div style="padding: 12px 16px; border-radius: 4px; font-size: 0.95rem; background: rgba(50,180,90,0.15); color: #7de89a; border: 1px solid rgba(50,180,90,0.35);">Thanks — we'll be in touch within a couple of days.</div>
             </sc-if>
+            <!--I need to add error message here for the case that form is not valid
+            <sc-if >
+
+            </sc-if>
+            -->
           </form>
         </div>
       </div>
@@ -552,15 +576,15 @@
 
   <footer style="background: #05060a; padding: 64px 0 32px; border-top: 4px solid #480014;">
     <div style="width: min(1200px, 92%); margin: 0 auto;">
-      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px;">
-        <div>
+      <div class="site-footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px;">
+        <div class="site-footer-column site-footer-brand">
           <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
             <img src="images/wolfpack-logo.jpg" alt="Claremont Wolfpack mascot" style="width: 44px; height: 44px; border-radius: 50%;" />
             <span>Claremont <span style="color: #d64461;">Wolfpack</span> MTB</span>
           </div>
           <p style="color: #9aa1ac; font-size: 0.95rem; max-width: 40ch;">A SoCal League youth mountain bike race team for 6th–12th graders. Ride with the pack. Race in the mountains.</p>
         </div>
-        <div>
+        <div class="site-footer-column">
           <h4 style="font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px; color: #ffffff;">Explore</h4>
           <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 0.95rem;">
             <li><a href="#races" style="color: #9aa1ac;" style-hover="color: #d64461;" onClick="{{ goHome }}">Season Events</a></li>
@@ -570,7 +594,7 @@
             <li><span style="color: #9aa1ac; cursor: pointer;" style-hover="color: #d64461;" onClick="{{ goCoaches }}">Coaches Page</span></li>
           </ul>
         </div>
-        <div>
+        <div class="site-footer-column">
           <h4 style="font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px; color: #ffffff;">Ride With Us</h4>
           <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 0.95rem; color: #9aa1ac;">
             <li>Bonelli Regional Park</li>
@@ -580,7 +604,7 @@
             <li>Claremont, CA</li>
           </ul>
         </div>
-        <div>
+        <div class="site-footer-column">
           <h4 style="font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px; color: #ffffff;">Connect</h4>
           <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 0.95rem;">
             <li><a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #9aa1ac;" style-hover="color: #d64461;">TeamSnap Portal ↗</a></li>
@@ -588,7 +612,7 @@
           </ul>
         </div>
       </div>
-      <div style="border-top: 1px solid #2a2e35; padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.12em; flex-wrap: wrap; gap: 16px;">
+      <div class="site-footer-bottom" style="border-top: 1px solid #2a2e35; padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.12em; flex-wrap: wrap; gap: 16px;">
         <span>© 2026 Claremont Wolfpack MTB · Grades 6–12</span>
         <span>Bike &amp; helmet required · Beginners welcome</span>
       </div>
