@@ -67,6 +67,7 @@
         <a href="#practice" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Practice</a>
         <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goRiders }}">Riders</span>
         <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goCoaches }}">Coaches</span>
+        <a href="#donate" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Donate</a>
         <a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;">TeamSnap ↗</a>
         <a href="#interest" style="padding: 11px 22px; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600; font-size: 0.85rem;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHome }}">Join The Pack</a>
       </nav>
@@ -78,6 +79,7 @@
         <a href="#practice" style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goHomeAndCloseNav }}">Practice</a>
         <span style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goRiders }}">Riders</span>
         <span style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goCoaches }}">Coaches</span>
+        <a href="#donate" style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goHomeAndCloseNav }}">Donate</a>
         <a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ closeNavMenu }}">TeamSnap ↗</a>
         <a href="#interest" style="margin-top: 4px; padding: 12px 16px; text-align: center; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHomeAndCloseNav }}">Join The Pack</a>
       </nav>
@@ -326,6 +328,25 @@
               <div role="status" style="padding: 12px 16px; border-radius: 4px; font-size: 0.95rem; background: rgba(50,180,90,0.15); color: #7de89a; border: 1px solid rgba(50,180,90,0.35);">Thanks — we'll be in touch within a couple of days.</div>
             </sc-if>
           </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="donate" style="padding: 96px 0; background: #14161a; border-top: 1px solid #2a2e35; border-bottom: 1px solid #2a2e35;">
+      <div style="width: min(1200px, 92%); margin: 0 auto;">
+        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 40px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Support The Team
+            </div>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">Donate</h2>
+          </div>
+        </div>
+
+        <div style="max-width: 72ch; padding: clamp(22px, 3.5vw, 36px); background: #0a0b0d; border: 1px solid #2a2e35; border-left: 4px solid #480014; border-radius: 12px;">
+          <p style="color: #e8ebef; margin-bottom: 16px; text-wrap: pretty;">We're a fully volunteer-run organization dedicated to helping local youth discover mountain biking while building athleticism, character, confidence, resilience, teamwork, and leadership. Our mission is to create an inclusive, safe, and empowering environment where young athletes can grow as riders, teammates, and leaders — on and off the course.</p>
+          <p style="color: #e8ebef; margin-bottom: 22px; text-wrap: pretty;">Your donation doesn't just fund equipment and trail access; it directly invests in the future, health, and spirit of local youth. Thank you for joining our team and helping us shape a stronger, more connected community.</p>
+          <p style="margin: 0; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; letter-spacing: 0.04em; text-transform: uppercase;">Donate via Zelle: <span style="color: #d64461;">donations@claremontmtb.org</span></p>
         </div>
       </div>
     </section>
@@ -590,6 +611,7 @@
             <li><a href="#benefits" style="color: #9aa1ac;" style-hover="color: #d64461;" onClick="{{ goHome }}">Why Join</a></li>
             <li><span style="color: #9aa1ac; cursor: pointer;" style-hover="color: #d64461;" onClick="{{ goRiders }}">Riders Page</span></li>
             <li><span style="color: #9aa1ac; cursor: pointer;" style-hover="color: #d64461;" onClick="{{ goCoaches }}">Coaches Page</span></li>
+            <li><a href="#donate" style="color: #9aa1ac;" style-hover="color: #d64461;" onClick="{{ goHome }}">Donate</a></li>
           </ul>
         </div>
         <div class="site-footer-column">
