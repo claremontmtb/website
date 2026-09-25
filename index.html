@@ -55,8 +55,8 @@
   <header style="position: sticky; top: 0; z-index: 50; background: rgba(10,11,13,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid #2a2e35;">
     <div style="width: min(1200px, 92%); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0;">
       <div style="display: flex; align-items: center; gap: 12px; cursor: pointer; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;" onClick="{{ goHome }}">
-        <img src="images/wolfpack-logo.jpg" alt="Claremont Wolfpack mascot" style="width: 44px; height: 44px; border-radius: 50%;" />
-        <span>Claremont <span style="color: #d64461;">Wolfpack</span> MTB</span>
+        <img src="images/wolfpack-logo.jpg" alt="Claremont MTB logo" style="width: 44px; height: 44px; border-radius: 50%;" />
+        <span>Claremont <span style="color: #d64461;">MTB</span></span>
       </div>
       <button type="button" class="mobile-nav-trigger" aria-label="Toggle navigation menu" onClick="{{ toggleNavMenu }}" style="width: 44px; height: 44px; border-radius: 8px; border: 1px solid #2a2e35; background: #14161a; color: #ffffff; place-items: center; cursor: pointer;">
         <span style="display: block; width: 20px; height: 2px; background: #ffffff; box-shadow: 0 6px 0 #ffffff, 0 -6px 0 #ffffff;"></span>
@@ -69,7 +69,7 @@
         <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goCoaches }}">Coaches</span>
         <a href="#donate" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Donate</a>
         <a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;">TeamSnap ↗</a>
-        <a href="#interest" style="padding: 11px 22px; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600; font-size: 0.85rem;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHome }}">Join The Pack</a>
+        <a href="#interest" style="padding: 11px 22px; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600; font-size: 0.85rem;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHome }}">Join The Team</a>
       </nav>
     </div>
     <sc-if value="{{ navMenuOpen }}" hint-placeholder-val="false">
@@ -81,7 +81,7 @@
         <span style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goCoaches }}">Coaches</span>
         <a href="#donate" style="cursor: pointer; color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ goHomeAndCloseNav }}">Donate</a>
         <a href="https://go.teamsnap.com/" target="_blank" rel="noopener" style="color: #ffffff; padding: 8px 6px;" style-hover="color: #d64461;" onClick="{{ closeNavMenu }}">TeamSnap ↗</a>
-        <a href="#interest" style="margin-top: 4px; padding: 12px 16px; text-align: center; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHomeAndCloseNav }}">Join The Pack</a>
+        <a href="#interest" style="margin-top: 4px; padding: 12px 16px; text-align: center; background: #480014; color: #ffffff; border-radius: 8px; font-weight: 600;" style-hover="background: #2e000d; color: #ffffff;" onClick="{{ goHomeAndCloseNav }}">Join The Team</a>
       </nav>
     </sc-if>
   </header>
@@ -95,7 +95,7 @@
         <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461;">
           <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Claremont MTB · SoCal League
         </div>
-        <h1 style="font-size: clamp(3rem, 2rem + 5vw, 6.5rem); letter-spacing: -0.02em; margin: 22px 0 16px;">Ride With The Pack.<span style="color: #d64461; display: block;">Race In The Mountains.</span></h1>
+        <h1 style="font-size: clamp(3rem, 2rem + 5vw, 6.5rem); letter-spacing: -0.02em; margin: 22px 0 16px;">Ride With The Team.<span style="color: #d64461; display: block;">Race In The Mountains.</span></h1>
         <p style="font-size: 1.3rem; max-width: 55ch; color: #e8ebef; margin-bottom: 32px; text-wrap: pretty;">A youth mountain bike race team for 6th–12th graders. Riding and racing together in the SoCal League. No experience necessary — just a love of riding bikes.</p>
         <div style="display: flex; flex-wrap: wrap; gap: 16px;">
           <a href="#interest" style="display: inline-flex; align-items: center; padding: 16px 32px; border-radius: 8px; background: #480014; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid transparent;" style-hover="background: #2e000d; color: #ffffff;">Get More Info</a>
@@ -119,7 +119,7 @@
             <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
               <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>On The Trail
             </div>
-            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">This Is The Pack</h2>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">This Is The Team</h2>
           </div>
           <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Real riders. Real dirt. From Bonelli's flowing berms to Marshall Canyon's climbs — this is where we train, together.</p>
         </div>
@@ -153,7 +153,7 @@
             </div>
             <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">More Than A Team</h2>
           </div>
-          <p style="max-width: 45ch; color: #9aa1ac; margin: 0; text-wrap: pretty;">Mountain biking is a rare kind of sport: you race as an individual, but you train, travel, and grow as a team. It's a family sport, a fitness sport, and a fun sport — all in one pack.</p>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0; text-wrap: pretty;">Mountain biking is a rare kind of sport: you race as an individual, but you train, travel, and grow as a team. It's a family sport, a fitness sport, and a fun sport — all rolled into one.</p>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;">
           <div style="padding: 32px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 14px; transition: transform 0.3s, border-color 0.3s;" style-hover="transform: translateY(-4px); border-color: #d64461;">
@@ -245,7 +245,7 @@
             <p style="color: #9aa1ac; font-size: 0.95rem;">Which spot we're riding is posted weekly in TeamSnap — always check before you load the bike.</p>
           </div>
           <div style="aspect-ratio: 4/3; border-radius: 14px; overflow: hidden; border: 1px solid #2a2e35;">
-            <img src="images/practice-sunset.jpg" alt="Wolfpack riders stretching in a circle at dusk practice with the San Gabriel mountains behind" style="width: 100%; height: 100%; object-fit: cover;" />
+            <img src="images/practice-sunset.jpg" alt="Claremont MTB riders stretching in a circle at dusk practice with the San Gabriel mountains behind" style="width: 100%; height: 100%; object-fit: cover;" />
           </div>
         </div>
       </div>
@@ -257,7 +257,7 @@
         <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
           <div style="flex: 1; min-width: 300px;">
             <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
-              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Ready To Run With The Pack?
+              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Ready To Ride With The Team?
             </div>
             <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">Get More Information</h2>
           </div>
@@ -376,7 +376,7 @@
             </div>
             <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">Sign Up &amp; League Info</h2>
           </div>
-          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Every Wolfpack rider registers with the SoCal League <em>and</em> the team. Work through these in order — allow a week or two before your first practice.</p>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Every Claremont MTB rider registers with the SoCal League <em>and</em> the team. Work through these in order — allow a week or two before your first practice.</p>
         </div>
 
         <ol style="list-style: none; padding: 0; margin: 0 0 48px; display: grid;">
@@ -458,8 +458,8 @@
         <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461;">
           <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>For Coaches &amp; Ride Leaders
         </div>
-        <h1 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin: 16px 0;">Lead The Pack</h1>
-        <p style="max-width: 60ch; color: #e8ebef; text-wrap: pretty;">Coaches, ride leaders, and parent volunteers are the backbone of Wolfpack. Here's everything you need to get licensed, insured, and out on the trail with our riders — plus what to carry when you're the adult on the ride.</p>
+        <h1 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin: 16px 0;">Lead The Team</h1>
+        <p style="max-width: 60ch; color: #e8ebef; text-wrap: pretty;">Coaches, ride leaders, and parent volunteers are the backbone of Claremont MTB. Here's everything you need to get licensed, insured, and out on the trail with our riders — plus what to carry when you're the adult on the ride.</p>
       </div>
     </section>
 
@@ -470,7 +470,7 @@
             <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
               <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Get Started
             </div>
-            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">How To Become A Wolfpack Coach</h2>
+            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">How To Become A Claremont MTB Coach</h2>
           </div>
           <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Every SoCal League coach follows the same path. Start with a conversation, then work through the SoCal League's licensing steps. Budget 4–6 weeks — background checks can take time.</p>
         </div>
@@ -586,7 +586,7 @@
       <div style="position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(122,0,20,0.3), transparent 60%);"></div>
       <div style="position: relative; width: min(1200px, 92%); margin: 0 auto; text-align: center;">
         <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin-bottom: 16px;">Ready To Coach?</h2>
-        <p style="max-width: 60ch; margin: 0 auto 32px; color: #e8ebef; text-wrap: pretty;">The Wolfpack always needs more adults on the ride. If you love bikes and love kids finding themselves in the outdoors, we want you.</p>
+        <p style="max-width: 60ch; margin: 0 auto 32px; color: #e8ebef; text-wrap: pretty;">The team always needs more adults on the ride. If you love bikes and love kids finding themselves in the outdoors, we want you.</p>
         <a href="#interest" style="display: inline-flex; align-items: center; padding: 16px 32px; border-radius: 8px; background: #480014; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase;" style-hover="background: #2e000d; color: #ffffff;">Contact The Team Director</a>
       </div>
     </section>
@@ -598,10 +598,10 @@
       <div class="site-footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px;">
         <div class="site-footer-column site-footer-brand">
           <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
-            <img src="images/wolfpack-logo.jpg" alt="Claremont Wolfpack mascot" style="width: 44px; height: 44px; border-radius: 50%;" />
-            <span>Claremont <span style="color: #d64461;">Wolfpack</span> MTB</span>
+            <img src="images/wolfpack-logo.jpg" alt="Claremont MTB logo" style="width: 44px; height: 44px; border-radius: 50%;" />
+            <span>Claremont <span style="color: #d64461;">MTB</span></span>
           </div>
-          <p style="color: #9aa1ac; font-size: 0.95rem; max-width: 40ch;">A SoCal League youth mountain bike race team for 6th–12th graders. Ride with the pack. Race in the mountains.</p>
+          <p style="color: #9aa1ac; font-size: 0.95rem; max-width: 40ch;">A SoCal League youth mountain bike race team for 6th–12th graders. Ride with the team. Race in the mountains.</p>
         </div>
         <div class="site-footer-column">
           <h4 style="font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 16px; color: #ffffff;">Explore</h4>
@@ -632,7 +632,7 @@
         </div>
       </div>
       <div class="site-footer-bottom" style="border-top: 1px solid #2a2e35; padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.12em; flex-wrap: wrap; gap: 16px;">
-        <span>© 2026 Claremont Wolfpack MTB · Grades 6–12</span>
+        <span>© 2026 Claremont MTB · Grades 6–12</span>
         <span>Bike &amp; helmet required · Beginners welcome</span>
       </div>
     </div>
@@ -661,8 +661,8 @@ class Component extends DCLogic {
   renderVals() {
     const page = this.state.page || this.props.startPage || "home";
     const slideData = [
-      ["images/finish-joy.jpg", "Wolfpack rider smiling as she rolls across the finish line", "Finish Line · SoCal League"],
-      ["images/boys-staging.jpg", "Claremont Mountain Bike Team riders in Wolfpack jerseys staging for a race", "Staging · Race Day"],
+      ["images/finish-joy.jpg", "Claremont MTB rider smiling as she rolls across the finish line", "Finish Line · SoCal League"],
+      ["images/boys-staging.jpg", "Claremont MTB riders in team jerseys staging for a race", "Staging · Race Day"],
       ["images/sunset-rider.jpg", "Rider on a golden hour ridgeline trail above the valley", "Golden Hour · Trail Ride"],
       ["images/podium-skypark.jpg", "Five young riders on the SoCal League finish podium with medals", "On The Podium · SoCal Finals"],
       ["images/practice-sunset.jpg", "Claremont riders during practice at practice-sunset.", "Ride Together · Practice"],
@@ -746,19 +746,19 @@ class Component extends DCLogic {
       ],
 
       signupSteps: [
-        { num: "01", title: "Email the team to get the Wolfpack passcode", body: "Contact us using the form below. You'll get the team registration passcode plus current practice times and meeting dates. Do this first — you can't join the team roster without it." },
-        { num: "02", title: "Register the rider with the SoCal League", body: "Create a CCN profile at socalyouthcycling.org/register and join Claremont Wolfpack with your passcode. Returning riders: reuse last year's profile, don't create a new one." },
+        { num: "01", title: "Email the team to get the team passcode", body: "Contact us using the form below. You'll get the team registration passcode plus current practice times and meeting dates. Do this first — you can't join the team roster without it." },
+        { num: "02", title: "Register the rider with the SoCal League", body: "Create a CCN profile at socalyouthcycling.org/register and join Claremont MTB with your passcode. Returning riders: reuse last year's profile, don't create a new one." },
         { num: "03", title: "Sign waivers & the student-athlete code of conduct", body: "Parent/guardian and rider both sign the participation agreement, waiver & release of liability, and code of conduct inside CCN. No signed waivers means no riding." },
-        // { num: "04", title: "Pay league + team fees", body: "League registration is paid through CCN. The $50 Wolfpack team fee is separate and covers team tent, and race-day support." },
+        // { num: "04", title: "Pay league + team fees", body: "League registration is paid through CCN. The $50 team fee is separate and covers team tent, and race-day support." },
         { num: "04", title: "Pay league fees", body: "League registration is paid through CCN." },
         { num: "05", title: "Get the bike and helmet checked", body: "Bring your bike to a practice or a local shop for a safety check before your first ride. A helmet in good condition (not cracked, under 5 years old) is required at every practice and race." }
       ],
 
       riderLinks: [
-        { title: "SoCal League · Register", href: "https://www.socalyouthcycling.org/register", hint: "socalyouthcycling.org/register", body: "The official rider registration portal. Create your CCN profile, join the Wolfpack team with your passcode, sign waivers, and pay league fees." },
+        { title: "SoCal League · Register", href: "https://www.socalyouthcycling.org/register", hint: "socalyouthcycling.org/register", body: "The official rider registration portal. Create your CCN profile, join the Claremont MTB team with your passcode, sign waivers, and pay league fees." },
         { title: "SoCal Youth Cycling", href: "https://www.socalyouthcycling.org/", hint: "socalyouthcycling.org", body: "League home: race calendar, venues, categories, rules, weather calls, and season announcements. Check here before every race weekend." },
         { title: "League Rulebook", href: "https://www.socalyouthcycling.org/rulebook", hint: "socalyouthcycling.org/rulebook", body: "Race categories, call-ups, conduct, and equipment rules. Worth a skim before your first race weekend." },
-        { title: "TeamSnap · Wolfpack", href: "https://go.teamsnap.com/", hint: "go.teamsnap.com", body: "Day-to-day team hub: practice locations, weekly schedule changes, carpools, and messages from the coaches. Turn notifications on." }
+        { title: "TeamSnap · Claremont MTB", href: "https://go.teamsnap.com/", hint: "go.teamsnap.com", body: "Day-to-day team hub: practice locations, weekly schedule changes, carpools, and messages from the coaches. Turn notifications on." }
       ],
 
       signupFacts: [
@@ -813,14 +813,14 @@ class Component extends DCLogic {
       ],
 
       steps: [
-        { num: "01", title: "Talk to the Wolfpack team director", body: "Contact us using the form below to start the conversation. We'll invite you to the team's registration passcode and answer questions about time commitment and expectations." },
-        { num: "02", title: "Register on the CCN platform", body: "Create your CCN profile, join the Wolfpack team, and complete the coach registration form. Returning coaches: use your existing profile — don't create a new one." },
+        { num: "01", title: "Talk to the team director", body: "Contact us using the form below to start the conversation. We'll invite you to the team's registration passcode and answer questions about time commitment and expectations." },
+        { num: "02", title: "Register on the CCN platform", body: "Create your CCN profile, join the Claremont MTB team, and complete the coach registration form. Returning coaches: use your existing profile — don't create a new one." },
         { num: "03", title: "Sign waivers & adult code of conduct", body: "Read and sign the participation agreement, waiver & release of liability, and adult code of conduct in your CCN cart. Paperwork isn't the fun part, but all of these steps are required by the League's insurance before you can coach." },
         { num: "04", title: "Complete your annual background check", body: "Initiated through CCN. Complete this at least 28 days before your first practice — county courts can be slow. Cost is $38 initial, $11 annual renewal. Questions:", email: "coachlicensing@socalyouthcycling.org", mailto: "mailto:coachlicensing@socalyouthcycling.org" },
         { num: "05", title: "Complete Abuse & Awareness training", body: "\u201cProtecting Students from Abuse\u201d from the U.S. Center for SafeSport and NFHS. Free, online, and required annually for every coach at both levels." },
         { num: "06", title: "Assistant Coaches: you're licensed here", body: "Background check plus abuse awareness training is the full Assistant Coach requirement, and all of it is online. You can ride and assist at practice — but a Coach-level licensee has to lead the activity." },
         { num: "07", title: "Coach level: CCC, First Aid/CPR, and Teaching Basic Bike Skills", body: "Finish the Core Coach Curriculum (online, once, via Canvas on CCN), hold current Basic First Aid + CPR with an in-person component (fully online classes are not accepted, ~$100), and take the Teaching Basic Bike Skills clinic. Questions on whether a First Aid class qualifies go to:", email: "amber@socalyouthcycling.org", mailto: "mailto:amber@socalyouthcycling.org" },
-        { num: "08", title: "Get on the trail with us", body: "Once your CCN profile shows licensed, you're covered by League insurance for the season. Come out to a Wolfpack practice and shadow a current coach for your first few sessions. Coaches must reach the Coach level within two seasons." }
+        { num: "08", title: "Get on the trail with us", body: "Once your CCN profile shows licensed, you're covered by League insurance for the season. Come out to a team practice and shadow a current coach for your first few sessions. Coaches must reach the Coach level within two seasons." }
       ],
 
       licenses: [
@@ -836,7 +836,7 @@ class Component extends DCLogic {
         ]},
         { title: "CCN · Registration", href: "https://www.socalyouthcycling.org/register", hint: "socalyouthcycling.org/register", items: [
           g("Create or claim your profile", "All coach registration runs through CCN"),
-          g("Join the Wolfpack team", "Passcode from team director"),
+          g("Join the Claremont MTB team", "Passcode from team director"),
           g("Sign waivers & pay fees", "Waivers and background check kicked off here")
         ]},
         { title: "CCN · Coach Registration", href: "https://ccnbikes.com/#!/memberships/socal-cycling-league", hint: "ccnbikes.com", items: [
@@ -854,9 +854,9 @@ class Component extends DCLogic {
           g("League rules & safety", "Current SoCal League rulebook and policies"),
           g("News & announcements", "Season updates, venue changes, weather calls")
         ]},
-        { title: "Wolfpack Coaching Team", href: "https://go.teamsnap.com/", hint: "Teamsnap", items: [
+        { title: "Claremont MTB Coaching Team", href: "https://go.teamsnap.com/", hint: "Teamsnap", items: [
           g("Ask questions before you sign up", "We'll walk you through everything"),
-          g("Get the team passcode", "Needed to join Wolfpack on CCN"),
+          g("Get the team passcode", "Needed to join Claremont MTB on CCN"),
           g("Shadow a practice", "Come out and see if it's a fit")
         ]}
       ],
