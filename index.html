@@ -221,17 +221,17 @@
               <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Where We Ride
             </div>
             <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem); margin-bottom: 20px;">Practice Twice A Week</h2>
-            <p style="color: #e8ebef; text-wrap: pretty;">Practices run November through the spring race season. Two practice days per week plus optional weekend team rides. We rotate through four local spots: Bonelli Regional Park, Marshall Canyon, and the Claremont Hills Wilderness Park.</p>
+            <p style="color: #e8ebef; text-wrap: pretty;">From December through the spring race season we practice on Tuesday and Thursday evenings. We have optional pre-season rides from October through December on Saturday mornings. We rotate through four local spots: Bonelli Regional Park, Marshall Canyon, and the Claremont Hills Wilderness Park.</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 32px 0;">
               <div style="padding: 24px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 8px;">
-                <h4 style="font-size: 1.2rem; color: #d64461; margin-bottom: 8px; letter-spacing: 0.05em;">Weekday</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #e8ebef;">After-school skills &amp; endurance</p>
-                <small style="display: block; margin-top: 8px; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.1em;">Day &amp; Time TBD</small>
+                <h4 style="font-size: 1.2rem; color: #d64461; margin-bottom: 8px; letter-spacing: 0.05em;">Oct - Dec</h4>
+                <p style="margin: 0; font-size: 0.95rem; color: #e8ebef;">Pre-season: Get to know the team and trails</p>
+                <small style="display: block; margin-top: 8px; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.1em;">Sat 8:30 - 10:30 AM</small>
               </div>
               <div style="padding: 24px; background: #1e2126; border: 1px solid #2a2e35; border-radius: 8px;">
-                <h4 style="font-size: 1.2rem; color: #d64461; margin-bottom: 8px; letter-spacing: 0.05em;">Weekend</h4>
-                <p style="margin: 0; font-size: 0.95rem; color: #e8ebef;">Optional longer team ride</p>
-                <small style="display: block; margin-top: 8px; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.1em;">Day &amp; Time TBD</small>
+                <h4 style="font-size: 1.2rem; color: #d64461; margin-bottom: 8px; letter-spacing: 0.05em;">Dec - May</h4>
+                <p style="margin: 0; font-size: 0.95rem; color: #e8ebef;">Regular season: After-school skills &amp; endurance</p>
+                <small style="display: block; margin-top: 8px; font-size: 0.8rem; color: #9aa1ac; text-transform: uppercase; letter-spacing: 0.1em;">Tues &amp; Thurs 5:30 - 7:30 PM</small>
               </div>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px;">
@@ -242,10 +242,36 @@
                 </div>
               </sc-for>
             </div>
-            <p style="color: #9aa1ac; font-size: 0.95rem;">Which spot we're riding is posted weekly in TeamSnap — always check before you load the bike.</p>
+            <p style="color: #9aa1ac; font-size: 0.95rem;">Which spot we're riding is posted weekly in <a href="https://go.teamsnap.com/TeamSnap" target="_blank">TeamSnap</a> — always check before you load the bike.</p>
           </div>
           <div style="aspect-ratio: 4/3; border-radius: 14px; overflow: hidden; border: 1px solid #2a2e35;">
             <img src="images/practice-sunset.jpg" alt="Claremont MTB riders stretching in a circle at dusk practice with the San Gabriel mountains behind" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+        </div>
+        <div id="practice-gear" style="margin-top: 96px;">
+          <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+              <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
+                <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Gear Checklist
+              </div>
+              <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">What To Bring To Practice</h2>
+            </div>
+            <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Show up self-sufficient. A prepared rider is a fast rider — and a safe one.</p>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            <sc-for list="{{ riderGear }}" as="card" hint-placeholder-count="6">
+              <div style="background: #0a0b0d; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px;" style-hover="border-color: #d64461;">
+                <h3 style="color: #d64461; font-size: 1.3rem; margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid #2a2e35; letter-spacing: 0.04em;">{{ card.title }}</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid;">
+                  <sc-for list="{{ card.items }}" as="item" hint-placeholder-count="4">
+                    <li style="display: flex; align-items: start; gap: 12px; padding: 9px 0; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                      <span style="flex-shrink: 0; width: 8px; height: 8px; background: #480014; transform: rotate(45deg); margin-top: 8px;"></span>
+                      <span><strong style="color: #ffffff; display: block;">{{ item.name }}</strong><span style="color: #9aa1ac; font-size: 0.85rem;">{{ item.note }}</span></span>
+                    </li>
+                  </sc-for>
+                </ul>
+              </div>
+            </sc-for>
           </div>
         </div>
       </div>
@@ -417,35 +443,6 @@
         </div>
       </div>
     </section>
-
-    <section style="padding: 96px 0;">
-      <div style="width: min(1200px, 92%); margin: 0 auto;">
-        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
-          <div style="flex: 1; min-width: 300px;">
-            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
-              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>Gear Checklist
-            </div>
-            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">What To Bring To Practice</h2>
-          </div>
-          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Show up self-sufficient. A prepared rider is a fast rider — and a safe one.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-          <sc-for list="{{ riderGear }}" as="card" hint-placeholder-count="6">
-            <div style="background: #14161a; border: 1px solid #2a2e35; border-radius: 14px; padding: 32px;" style-hover="border-color: #d64461;">
-              <h3 style="color: #d64461; font-size: 1.3rem; margin-bottom: 22px; padding-bottom: 12px; border-bottom: 1px solid #2a2e35; letter-spacing: 0.04em;">{{ card.title }}</h3>
-              <ul style="list-style: none; padding: 0; margin: 0; display: grid;">
-                <sc-for list="{{ card.items }}" as="item" hint-placeholder-count="4">
-                  <li style="display: flex; align-items: start; gap: 12px; padding: 9px 0; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                    <span style="flex-shrink: 0; width: 8px; height: 8px; background: #480014; transform: rotate(45deg); margin-top: 8px;"></span>
-                    <span><strong style="color: #ffffff; display: block;">{{ item.name }}</strong><span style="color: #9aa1ac; font-size: 0.85rem;">{{ item.note }}</span></span>
-                  </li>
-                </sc-for>
-              </ul>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-    </section>
   </main>
   </sc-if>
 
@@ -535,7 +532,7 @@
             </div>
             <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">What Coaches Carry On The Trail</h2>
           </div>
-          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Riders show up prepared. Coaches show up prepared <em>for everyone</em>. Everything on the Riders page — plus these.</p>
+          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Riders show up prepared. Coaches show up prepared <em>for everyone</em>. Everything on the rider gear list — plus these.</p>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
           <sc-for list="{{ coachGear }}" as="card" hint-placeholder-count="6">
