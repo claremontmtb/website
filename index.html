@@ -475,12 +475,15 @@
           <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">Every SoCal League coach follows the same path. Start with a conversation, then work through the SoCal League's licensing steps. Budget 4–6 weeks — background checks can take time.</p>
         </div>
         <ol style="list-style: none; padding: 0; margin: 0; display: grid;">
-          <sc-for list="{{ steps }}" as="step" hint-placeholder-count="8">
+          <sc-for list="{{ steps }}" as="step" hint-placeholder-count="6">
             <li style="display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid #2a2e35;">
               <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 700; color: #d64461; line-height: 1.2;">{{ step.num }}</span>
               <div>
                 <h4 style="margin: 0 0 6px; font-size: 1.15rem;">{{ step.title }}</h4>
                 <p style="margin: 0; color: #e8ebef; font-size: 0.95rem; text-wrap: pretty;">{{ step.body }}
+                  <sc-if value="{{ step.linkText }}" hint-placeholder-val="{{ false }}">
+                    <a href="{{ step.href }}" target="_blank" rel="noopener" style="text-decoration: underline;">{{ step.linkText }}</a>{{ step.bodyAfter }}
+                  </sc-if>
                   <sc-if value="{{ step.email }}" hint-placeholder-val="{{ false }}">
                     <a href="{{ step.mailto }}" style="text-decoration: underline;">{{ step.email }}</a>
                   </sc-if>
@@ -489,36 +492,6 @@
             </li>
           </sc-for>
         </ol>
-      </div>
-    </section>
-
-    <section style="padding: 96px 0; background: #14161a; border-top: 1px solid #2a2e35;">
-      <div style="width: min(1200px, 92%); margin: 0 auto;">
-        <div style="display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 48px; flex-wrap: wrap;">
-          <div style="flex: 1; min-width: 300px;">
-            <div style="display: flex; align-items: center; gap: 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d64461; margin-bottom: 14px;">
-              <span style="width: 32px; height: 2px; background: #480014; display: block;"></span>SoCal League Coach Licensing
-            </div>
-            <h2 style="font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);">Two License Levels</h2>
-          </div>
-          <p style="max-width: 45ch; color: #9aa1ac; margin: 0;">The SoCal League licenses coaches at two levels — Assistant Coach and Coach. Everyone starts on the Assistant pathway; after two seasons you must reach Coach level to keep coaching. The more Coach-level licensees a team has, the more resilient it is.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-          <sc-for list="{{ licenses }}" as="lic" hint-placeholder-count="3">
-            <div style="background: #0a0b0d; border: 1px solid #2a2e35; border-top: 4px solid #480014; border-radius: 8px; padding: 26px;">
-              <span style="display: inline-block; padding: 4px 12px; background: #480014; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 4px; margin-bottom: 14px;">{{ lic.level }}</span>
-              <h3 style="margin: 0 0 8px; font-size: 1.3rem;">{{ lic.title }}</h3>
-              <p style="color: #e8ebef; font-size: 0.95rem; margin-bottom: 16px;">{{ lic.body }}</p>
-              <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 2px;">
-                <sc-for list="{{ lic.reqs }}" as="req" hint-placeholder-count="4">
-                  <li style="display: flex; align-items: start; gap: 12px; padding: 6px 0; font-size: 0.95rem; color: #ffffff;">
-                    <span style="flex-shrink: 0; width: 8px; height: 8px; background: #480014; transform: rotate(45deg); margin-top: 8px;"></span>{{ req }}
-                  </li>
-                </sc-for>
-              </ul>
-            </div>
-          </sc-for>
-        </div>
       </div>
     </section>
 
@@ -813,52 +786,29 @@ class Component extends DCLogic {
       ],
 
       steps: [
-        { num: "01", title: "Talk to the team director", body: "Contact us using the form below to start the conversation. We'll invite you to the team's registration passcode and answer questions about time commitment and expectations." },
-        { num: "02", title: "Register on the CCN platform", body: "Create your CCN profile, join the Claremont MTB team, and complete the coach registration form. Returning coaches: use your existing profile — don't create a new one." },
-        { num: "03", title: "Sign waivers & adult code of conduct", body: "Read and sign the participation agreement, waiver & release of liability, and adult code of conduct in your CCN cart. Paperwork isn't the fun part, but all of these steps are required by the League's insurance before you can coach." },
-        { num: "04", title: "Complete your annual background check", body: "Initiated through CCN. Complete this at least 28 days before your first practice — county courts can be slow. Cost is $38 initial, $11 annual renewal. Questions:", email: "coachlicensing@socalyouthcycling.org", mailto: "mailto:coachlicensing@socalyouthcycling.org" },
-        { num: "05", title: "Complete Abuse & Awareness training", body: "\u201cProtecting Students from Abuse\u201d from the U.S. Center for SafeSport and NFHS. Free, online, and required annually for every coach at both levels." },
-        { num: "06", title: "Assistant Coaches: you're licensed here", body: "Background check plus abuse awareness training is the full Assistant Coach requirement, and all of it is online. You can ride and assist at practice — but a Coach-level licensee has to lead the activity." },
-        { num: "07", title: "Coach level: CCC, First Aid/CPR, and Teaching Basic Bike Skills", body: "Finish the Core Coach Curriculum (online, once, via Canvas on CCN), hold current Basic First Aid + CPR with an in-person component (fully online classes are not accepted, ~$100), and take the Teaching Basic Bike Skills clinic. Questions on whether a First Aid class qualifies go to:", email: "amber@socalyouthcycling.org", mailto: "mailto:amber@socalyouthcycling.org" },
-        { num: "08", title: "Get on the trail with us", body: "Once your CCN profile shows licensed, you're covered by League insurance for the season. Come out to a team practice and shadow a current coach for your first few sessions. Coaches must reach the Coach level within two seasons." }
-      ],
-
-      licenses: [
-        { level: "Level 1 · Start Here", title: "Assistant Coach", body: "Works under the supervision of a Coach — provides assistance but does not lead sanctioned activities. Every new volunteer begins on the Assistant pathway, and all Assistant training is online.", reqs: ["Annual registration & waivers on CCN", "Annual criminal background check", "Abuse & Awareness training (NFHS, annual)", "All training available online"] },
-        { level: "Level 2 · Full License", title: "Coach", body: "Leads sanctioned activities — practices, skills sessions, and ride groups — and mentors coaches at both levels. After two seasons you must reach Coach level to keep coaching. Training is online plus local, in-person clinics.", reqs: ["Everything an Assistant Coach needs", "Core Coach Curriculum (once, online via Canvas)", "Basic First Aid + CPR (must have an in-person component)", "Teaching Basic Bike Skills clinic", "CEUs every 3 seasons to stay current"] }
+        { num: "01", title: "Talk to the team director", body: "Contact us using the form below to start the conversation. We'll answer questions about time commitment and expectations." },
+        { num: "02", title: "Register with the SoCal League", body: "Visit the", linkText: "league's Coaches page", href: "https://www.socalyouthcycling.org/coach", bodyAfter: " and click the Register button to start the registration process." },
+        { num: "03", title: "Sign waivers & adult code of conduct", body: "Read and sign the participation agreement, waiver & release of liability, and other required documents. Paperwork isn't the fun part, but all of these steps are required by the League's insurance before you can coach." },
+        { num: "04", title: "Complete your annual background check", body: "Initiated through Ankored. Complete this at least 28 days before your first practice — county courts can be slow. Questions:", email: "coachlicensing@socalyouthcycling.org", mailto: "mailto:coachlicensing@socalyouthcycling.org" },
+        { num: "05", title: "Complete Abuse & Awareness training", body: "\u201cProtecting Students from Abuse\u201d from the U.S. Center for SafeSport and NFHS. Free, online, and required annually for every coach." },
+        { num: "06", title: "Get on the trail with us", body: "Once your profile shows licensed, you're covered by League insurance for the season. Come out to a team practice and shadow a current coach for your first few sessions." }
       ],
 
       coachLinks: [
         { title: "SoCal League · Coach", href: "https://www.socalyouthcycling.org/coach", hint: "socalyouthcycling.org/coach", items: [
           g("Full requirements & policies", "The SoCal League's official coach onboarding page"),
-          g("Background check details", "Cost, timing, and troubleshooting"),
-          g("Approved First Aid/CPR instructors", "Names & contacts on the page")
+          g("Start Here", "Register button starts the process"),
+          g("Coach Resources", "Documents, forms, and other resources for coaches")
         ]},
-        { title: "CCN · Registration", href: "https://www.socalyouthcycling.org/register", hint: "socalyouthcycling.org/register", items: [
-          g("Create or claim your profile", "All coach registration runs through CCN"),
-          g("Join the Claremont MTB team", "Passcode from team director"),
+        { title: "LeagueApps · Registration", href: "https://thesocalleague.leagueapps.com/leagues/cycling/5161917-socal-league-season-19", items: [
+          g("Register riders and coaches", "All coach registration runs through LeagueApps"),
+          g("Join the Claremont MTB team", "For the correct team name, check with the team director"),
           g("Sign waivers & pay fees", "Waivers and background check kicked off here")
         ]},
-        { title: "CCN · Coach Registration", href: "https://ccnbikes.com/#!/memberships/socal-cycling-league", hint: "ccnbikes.com", items: [
-          g("Coach profile & license status", "Check whether you're cleared to ride"),
-          g("Core Coach Curriculum (Canvas LMS)", "All required online coursework lives here"),
+        { title: "Ankored · Background Check & Training", href: "https://app.ankored.com", hint: "app.ankored.com", items: [
+          g("Complete Online Training", "Links to online courses and completion status"),
           g("Upload certificates & CEUs", "First Aid/CPR cards and outside coursework")
         ]},
-        { title: "SafeSport / NFHS · Abuse Training", href: "https://nfhslearn.com/courses/protecting-students-from-abuse", hint: "nfhslearn.com", items: [
-          g("Protecting Students from Abuse", "Free course, required annually for all coaches"),
-          g("Identify and report misconduct", "Signs, symptoms, and how to make a report"),
-          g("Do it before your first practice", "Both Assistant and Coach levels need it")
-        ]},
-        { title: "SoCal Youth Cycling", href: "https://www.socalyouthcycling.org/", hint: "socalyouthcycling.org", items: [
-          g("Race schedule & venues", "Season race calendar and course info"),
-          g("League rules & safety", "Current SoCal League rulebook and policies"),
-          g("News & announcements", "Season updates, venue changes, weather calls")
-        ]},
-        { title: "Claremont MTB Coaching Team", href: "https://go.teamsnap.com/", hint: "Teamsnap", items: [
-          g("Ask questions before you sign up", "We'll walk you through everything"),
-          g("Get the team passcode", "Needed to join Claremont MTB on CCN"),
-          g("Shadow a practice", "Come out and see if it's a fit")
-        ]}
       ],
 
       coachGear: [
