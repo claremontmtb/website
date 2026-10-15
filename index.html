@@ -62,7 +62,6 @@
         <span style="display: block; width: 20px; height: 2px; background: #ffffff; box-shadow: 0 6px 0 #ffffff, 0 -6px 0 #ffffff;"></span>
       </button>
       <nav class="desktop-nav" style="display: flex; align-items: center; gap: 26px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap; justify-content: flex-end;">
-        <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Home</span>
         <a href="#races" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Events</a>
         <a href="#practice" style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goHome }}">Practice</a>
         <span style="cursor: pointer; color: #ffffff; padding-bottom: 3px; border-bottom: 2px solid transparent;" style-hover="color: #d64461; border-bottom-color: #d64461;" onClick="{{ goRiders }}">Riders</span>
@@ -714,15 +713,6 @@ class Component extends DCLogic {
         { num: "04", name: "Victory At Vail", round: "SoCal League Race 4", location: "Vail Lake · Temecula", date: "March 20-21", window: "Status Confirmed" },
         { num: "05", name: "Finals", round: "SoCal League Race 5", location: "Keysville BLM Recreation Area", date: "April 3-4", window: "Status Confirmed" },
         { num: "★", name: "State Championships", round: "Season Finale · SoCal League", location: "Tehachapi", date: "TBD", window: "Status TBD" }
-      ],
-
-      signupSteps: [
-        { num: "01", title: "Email the team to get the team passcode", body: "Contact us using the form below. You'll get the team registration passcode plus current practice times and meeting dates. Do this first — you can't join the team roster without it." },
-        { num: "02", title: "Register the rider with the SoCal League", body: "Create a CCN profile at socalyouthcycling.org/register and join Claremont MTB with your passcode. Returning riders: reuse last year's profile, don't create a new one." },
-        { num: "03", title: "Sign waivers & the student-athlete code of conduct", body: "Parent/guardian and rider both sign the participation agreement, waiver & release of liability, and code of conduct inside CCN. No signed waivers means no riding." },
-        // { num: "04", title: "Pay league + team fees", body: "League registration is paid through CCN. The $50 team fee is separate and covers team tent, and race-day support." },
-        { num: "04", title: "Pay league fees", body: "League registration is paid through CCN." },
-        { num: "05", title: "Get the bike and helmet checked", body: "Bring your bike to a practice or a local shop for a safety check before your first ride. A helmet in good condition (not cracked, under 5 years old) is required at every practice and race." }
       ],
 
       riderLinks: [
